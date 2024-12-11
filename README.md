@@ -20,12 +20,6 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 ### 2. Clear Daily Log
 - Reset the daily log to start fresh.
 
-### Future Addings
-1. New Tab  that dynamically adds new food items to each category
-- Add new food items to any of the six categories (Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
-- Provide nutritional information (calories, protein, saturated fat, and added sugar).
-
-
 
 ---
 
@@ -109,9 +103,13 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Future Enhancements
 
+- New Tab  that dynamically adds new food items to each category:
+   1. Add new food items to any of the six categories (Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
+   2. Provide nutritional information (calories, protein, saturated fat, and added sugar).
 - Add authentication for multi-user tracking.
 - Implement charts for visualizing nutritional trends.
 - Add export functionality for logs (e.g., CSV, PDF).
+
 
 ---
 
