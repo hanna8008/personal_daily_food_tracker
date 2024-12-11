@@ -4,7 +4,6 @@ A user-friendly web application to track daily meals, calculate nutritional tota
 
 - Log meals by category (e.g., Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
 - Automatically calculate totals for calories, protein, saturated fat, and added sugar.
-- Dynamically add new food items to each category.
 - Clear the daily log as needed.
 
 The application is built using **Flask** for the backend and **HTML/CSS with Bootstrap** for the frontend.
@@ -24,6 +23,11 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 
 ### 3. Clear Daily Log
 - Reset the daily log to start fresh.
+
+### Future Addings
+- Dynamically add new food items to each category.
+
+
 
 ---
 
