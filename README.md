@@ -25,7 +25,9 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 - Reset the daily log to start fresh.
 
 ### Future Addings
-- Dynamically add new food items to each category.
+1. New Tab  that dynamically adds new food items to each category
+- Add new food items to any of the six categories (Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
+- Provide nutritional information (calories, protein, saturated fat, and added sugar).
 
 
 
