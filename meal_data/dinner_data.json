@@ -1,0 +1,26 @@
+{
+    "Yogurt, Egg Whites with Toast, Milk, Banana": {
+        "Calories": 535,
+        "Protein (g)": 45.3,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 4
+    },
+    "Chocolate Chip Pancakes": {
+        "Calories": 409.7,
+        "Protein (g)": 22.64,
+        "Sat Fat (g)": 5.5,
+        "Added Sugar (g)": 19
+    },
+    "Avocado Bagel": {
+        "Calories": 330,
+        "Protein (g)": 10,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 3
+    },
+    "Jimmy Dean Turkey Sausage, Cheese, and Egg Breakfast Sandwich": {
+        "Calories": 270,
+        "Protein (g)": 18,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 2
+    }
+}

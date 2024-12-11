@@ -1,0 +1,44 @@
+{
+    "Strawberry Protein Ice Cream with Oreo Thins": {
+        "Calories": 275,
+        "Protein (g)": 22,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 13
+    },
+    "Vanilla Protein Ice Cream with Sugar-Free Brownies": {
+        "Calories": 255,
+        "Protein (g)": 22,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0
+    },
+    "Chocolate Ice Cream with Sugar-Free Reese's": {
+        "Calories": 225,
+        "Protein (g)": 23,
+        "Sat Fat (g)": 4.5,
+        "Added Sugar (g)": 0
+    },
+    "Greek Yogurt with Honey and Crushed Granola": {
+        "Calories": 315,
+        "Protein (g)": 21.11,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 24
+    },
+    "Frozen Banana Bites Dipped in Dark Chocolate": {
+        "Calories": 185,
+        "Protein (g)": 2.3,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 6
+    },
+    "Protein Mug Cake (Chocolate or Vanilla)": {
+        "Calories": 370,
+        "Protein (g)": 26,
+        "Sat Fat (g)": 6.75,
+        "Added Sugar (g)": 0
+    },
+    "Strawberries with Whipped Cream on Yellow Cake": {
+        "Calories": 270,
+        "Protein (g)": 5.11,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 1
+    }
+}

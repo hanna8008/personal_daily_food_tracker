@@ -1,0 +1,38 @@
+{
+    "Homemade Protein Shake": {
+        "Calories": 360,
+        "Protein (g)": 42,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 22
+    },
+    "Fairlife Protein Shake (42g)": {
+        "Calories": 230,
+        "Protein (g)": 42,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 0
+    },
+    "Fairlife Protein Shake (26g)": {
+        "Calories": 170,
+        "Protein (g)": 26,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 0
+    },
+    "Oikos Smoothie Protein Shake": {
+        "Calories": 140,
+        "Protein (g)": 23,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0
+    },
+    "Alani Nu": {
+        "Calories": 15,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0
+    },
+    "ICE Sparkling Flavored Water": {
+        "Calories": 5,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0
+    }
+}

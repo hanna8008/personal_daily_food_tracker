@@ -1,0 +1,62 @@
+{
+    "Greek Oikos Yogurt": {
+        "Calories": 135,
+        "Protein (g)": 16.11,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0
+    },
+    "Barbell Protein Bar - Creamy Crisp": {
+        "Calories": 200,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 0
+    },
+    "Barbell Protein Bar - Cookies and Cream": {
+        "Calories": 200,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 0
+    },
+    "Barbell Protein Bar - Chocolate Dough": {
+        "Calories": 200,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 0
+    },
+    "Mixed Fruit": {
+        "Calories": 231,
+        "Protein (g)": 3.01,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0
+    },
+    "Gala Apple": {
+        "Calories": 80,
+        "Protein (g)": 0.5,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0
+    },
+    "Aloha Protein Bar - Peanut Butter Chocolate Chip": {
+        "Calories": 240,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 3
+    },
+    "Aloha Protein Bar - Chocolate Fudge Brownie": {
+        "Calories": 220,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 4
+    },
+    "Aloha Protein Bar - Chocolate Chip Cookie Dough": {
+        "Calories": 240,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 4
+    },
+    "Aloha Protein Bar - Chocolate Mint": {
+        "Calories": 220,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 4
+    }
+}

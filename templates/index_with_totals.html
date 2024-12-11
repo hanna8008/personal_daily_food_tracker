@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Meal Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffe4e1; /* Light pink background */
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1, h3, h4, h5 {
+            font-family: 'Pacifico', cursive; /* Fun and feminine font */
+            color: #ff69b4; /* Hot pink for headers */
+        }
+        .btn-success {
+            background-color: #ff69b4; /* Hot pink button */
+            border-color: #ff69b4;
+        }
+        .btn-success:hover {
+            background-color: #ff1493; /* Deeper pink hover effect */
+            border-color: #ff1493;
+        }
+        .btn-danger {
+            background-color: #ffccd5; /* Soft pink for Clear Log button */
+            border-color: #ffccd5;
+            color: #d90429;
+        }
+        .btn-danger:hover {
+            background-color: #f08080; /* Slightly deeper pink hover */
+            border-color: #f08080;
+        }
+        .border {
+            border: 3px solid #ff69b4; /* Hot pink border */
+            border-radius: 15px;
+            background-color: #ffffff; /* White background for contrast */
+        }
+        ul {
+            list-style: none; /* Remove bullet points */
+            padding: 0;
+        }
+        li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        li strong {
+            color: #ff69b4; /* Highlight totals with hot pink */
+        }
+        select, .form-select {
+            background-color: #fff0f5; /* Light pink dropdowns */
+            border-color: #ff69b4;
+            border-radius: 8px;
+        }
+        .header-divider {
+            border-top: 2px dashed #ff69b4; /* Fun dashed line separator */
+            margin: 20px 0;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container text-center">
+        <h1>✨ Daily Meal Tracker ✨</h1>
+        <p style="color: #ff69b4;">Eat for energy, move for joy, and live for the moments that matter. 💪</p>
+
+        <!-- Meal Logs and Totals -->
+        <div class="row">
+            <!-- Left: Meals -->
+            <div class="col-md-6">
+                <h3>Today's Meals</h3>
+                {% if log['meals'] %}
+                    {% for meal_type, meals in log['meals'].items() %}
+                        <h5>{{ meal_type }}</h5>
+                        <ul>
+                            {% for meal in meals %}
+                                <li>{{ meal }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                {% else %}
+                    <p>No meals logged yet.</p>
+                {% endif %}
+            </div>
+            
+            <div class="col-md-6">
+                <h3>Today's Totals</h3>
+                <ul>
+                    <li><strong>Total Calories:</strong> {{ log['totals']['Calories'] }}</li>
+                    <li><strong>Total Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
+                    <li><strong>Total Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
+                    <li><strong>Total Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- Divider -->
+        <div class="header-divider"></div>
+
+        <!-- Add Meal and Clear Log Buttons -->
+        <div class="row">
+            <!-- Add Meal Form -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header" style="background-color: #ff69b4; color: white;">
+                        <h4>Add a Meal</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/add">
+                            <div class="mb-3">
+                                <label for="mealType" class="form-label">Meal Type</label>
+                                <select class="form-select" name="meal_type" id="mealType" required>
+                                    {% for meal_type in meal_data.keys() %}
+                                        <option value="{{ meal_type }}">{{ meal_type }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="mealItem" class="form-label">Meal Item</label>
+                                <select class="form-select" name="meal_item" id="mealItem" required>
+                                    {% for meal_type, items in meal_data.items() %}
+                                        <optgroup label="{{ meal_type }}">
+                                            {% for item_name, item_data in items.items() %}
+                                                <option value="{{ item_name }}">{{ item_name }}</option>
+                                            {% endfor %}
+                                        </optgroup>
+                                    {% endfor %}
+                                </select>
+                            </div>                            
+
+                            <button type="submit" class="btn btn-success">Add Meal</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear Log Button -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h4>Clear Daily Log</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <form method="GET" action="/clear">
+                            <button type="submit" class="btn btn-danger">Clear Log</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
