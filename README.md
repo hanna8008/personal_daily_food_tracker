@@ -122,5 +122,3 @@ Contributions are welcome! Feel free to fork this repository and submit pull req
 ## Contact
 
 Developed by **Hanna Zelis**
-
-Feel free to reach out for feedback or collaboration opportunities!
