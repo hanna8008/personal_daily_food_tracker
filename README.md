@@ -17,11 +17,7 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 - Choose meal items from predefined options.
 - View totals for calories, protein, saturated fat, and added sugar for the day.
 
-### 2. Add Food Items
-- Add new food items to any of the six categories (Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
-- Provide nutritional information (calories, protein, saturated fat, and added sugar).
-
-### 3. Clear Daily Log
+### 2. Clear Daily Log
 - Reset the daily log to start fresh.
 
 ### Future Addings
