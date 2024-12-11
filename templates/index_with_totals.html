@@ -1,77 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Meal Tracker</title>
+    <!-- Basic Metadata -->
+    <meta charset="UTF-8"> <!-- Specifies character encoding -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
+    <title>Daily Meal Tracker</title> <!-- Page title displayed in the browser tab -->
+
+    <!-- Include Bootstrap CSS for styling and layout -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+    <!-- Internal CSS for custom styles -->
     <style>
+        /* Set a light pink background and fun font for the page */
         body {
-            background-color: #ffe4e1; /* Light pink background */
+            background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
         }
+
+        /* Add margin and styling to the container */
         .container {
             margin-top: 50px;
         }
+
+        /* Styling for headers */
         h1, h3, h4, h5 {
-            font-family: 'Pacifico', cursive; /* Fun and feminine font */
-            color: #ff69b4; /* Hot pink for headers */
+            font-family: 'Pacifico', cursive; /* Custom font for headers */
+            color: #ff69b4; /* Hot pink color for headers */
         }
+
+        /* Hot pink button styling */
         .btn-success {
-            background-color: #ff69b4; /* Hot pink button */
+            background-color: #ff69b4;
             border-color: #ff69b4;
         }
+
+        /* Hover effect for buttons */
         .btn-success:hover {
-            background-color: #ff1493; /* Deeper pink hover effect */
+            background-color: #ff1493;
             border-color: #ff1493;
         }
+
+        /* Styling for the Clear Log button */
         .btn-danger {
-            background-color: #ffccd5; /* Soft pink for Clear Log button */
+            background-color: #ffccd5;
             border-color: #ffccd5;
-            color: #d90429;
+            color: #d90429; /* Red text */
         }
+
+        /* Hover effect for Clear Log button */
         .btn-danger:hover {
-            background-color: #f08080; /* Slightly deeper pink hover */
+            background-color: #f08080;
             border-color: #f08080;
         }
+
+        /* Card borders and backgrounds */
         .border {
-            border: 3px solid #ff69b4; /* Hot pink border */
+            border: 3px solid #ff69b4;
             border-radius: 15px;
-            background-color: #ffffff; /* White background for contrast */
+            background-color: #ffffff;
         }
+
+        /* Remove default bullet points and padding for lists */
         ul {
-            list-style: none; /* Remove bullet points */
+            list-style: none;
             padding: 0;
         }
+
+        /* List item styling */
         li {
             font-size: 16px;
             color: #333;
             margin-bottom: 5px;
         }
+
+        /* Highlighted text in list items */
         li strong {
-            color: #ff69b4; /* Highlight totals with hot pink */
+            color: #ff69b4;
         }
+
+        /* Styling for dropdowns */
         select, .form-select {
-            background-color: #fff0f5; /* Light pink dropdowns */
+            background-color: #fff0f5;
             border-color: #ff69b4;
             border-radius: 8px;
         }
+
+        /* Dashed line separator */
         .header-divider {
-            border-top: 2px dashed #ff69b4; /* Fun dashed line separator */
+            border-top: 2px dashed #ff69b4;
             margin: 20px 0;
         }
     </style>
+
+    <!-- Import Google Font for custom styling -->
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- Main Container -->
     <div class="container text-center">
+        <!-- Header -->
         <h1>✨ Daily Meal Tracker ✨</h1>
         <p style="color: #ff69b4;">Eat for energy, move for joy, and live for the moments that matter. 💪</p>
 
         <!-- Meal Logs and Totals -->
         <div class="row">
-            <!-- Left: Meals -->
+            <!-- Left Column: Meals -->
             <div class="col-md-6">
                 <h3>Today's Meals</h3>
                 {% if log['meals'] %}
@@ -84,20 +118,20 @@
                         </ul>
                     {% endfor %}
                 {% else %}
-                    <p>No meals logged yet.</p>
+                    <p>No meals logged yet.</p> <!-- Message if no meals are logged -->
                 {% endif %}
             </div>
-            
+
+            <!-- Right Column: Totals -->
             <div class="col-md-6">
                 <h3>Today's Totals</h3>
                 <ul>
-                    <li><strong>Total Calories:</strong> {{ log['totals']['Calories'] }}</li>
-                    <li><strong>Total Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
-                    <li><strong>Total Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
-                    <li><strong>Total Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
+                    <li><strong>Calories:</strong> {{ log['totals']['Calories'] }}</li>
+                    <li><strong>Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
+                    <li><strong>Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
+                    <li><strong>Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
                 </ul>
             </div>
-            
         </div>
 
         <!-- Divider -->
@@ -113,6 +147,7 @@
                     </div>
                     <div class="card-body">
                         <form method="POST" action="/add">
+                            <!-- Dropdown for meal type -->
                             <div class="mb-3">
                                 <label for="mealType" class="form-label">Meal Type</label>
                                 <select class="form-select" name="meal_type" id="mealType" required>
@@ -122,6 +157,7 @@
                                 </select>
                             </div>
                             
+                            <!-- Dropdown for meal items -->
                             <div class="mb-3">
                                 <label for="mealItem" class="form-label">Meal Item</label>
                                 <select class="form-select" name="meal_item" id="mealItem" required>
@@ -135,6 +171,7 @@
                                 </select>
                             </div>                            
 
+                            <!-- Submit button for adding meals -->
                             <button type="submit" class="btn btn-success">Add Meal</button>
                         </form>
                     </div>
@@ -149,6 +186,7 @@
                     </div>
                     <div class="card-body text-center">
                         <form method="GET" action="/clear">
+                            <!-- Submit button to clear the log -->
                             <button type="submit" class="btn btn-danger">Clear Log</button>
                         </form>
                     </div>
@@ -157,6 +195,7 @@
         </div>
     </div>
 
+    <!-- Include Bootstrap JS for interactivity -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 </body>
 </html>
