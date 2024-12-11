@@ -1,4 +1,4 @@
-# Daily Meal Tracker
+# Personal Project - Daily Meal Tracker
 
 A user-friendly web application to track daily meals, calculate nutritional totals, and manage food data. The project allows users to:
 
@@ -110,12 +110,6 @@ This project is licensed under the [MIT License](LICENSE).
 - Implement charts for visualizing nutritional trends.
 - Add export functionality for logs (e.g., CSV, PDF).
 
-
----
-
-## Contributions
-
-Contributions are welcome! Feel free to fork this repository and submit pull requests.
 
 ---
 
