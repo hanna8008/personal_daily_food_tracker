@@ -60,7 +60,8 @@ def initialize_log():
                 "Calories": 0,
                 "Protein (g)": 0,
                 "Sat Fat (g)": 0,
-                "Added Sugar (g)": 0
+                "Added Sugar (g)": 0,
+                "Total Cost ($)": 0
             }
         }
 
@@ -129,7 +130,8 @@ def clear_log():
             "Calories": 0,
             "Protein (g)": 0,
             "Sat Fat (g)": 0,
-            "Added Sugar (g)": 0
+            "Added Sugar (g)": 0,
+            "Total Cost ($)": 0
         }
     }
     save_log(log)  # Save the reset log

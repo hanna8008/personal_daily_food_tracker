@@ -3,36 +3,49 @@
         "Calories": 360,
         "Protein (g)": 42,
         "Sat Fat (g)": 0,
-        "Added Sugar (g)": 22
+        "Added Sugar (g)": 22,
+        "Total Cost ($)": 5.44
     },
     "Fairlife Protein Shake (42g)": {
         "Calories": 230,
         "Protein (g)": 42,
         "Sat Fat (g)": 2,
-        "Added Sugar (g)": 0
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 4.28
     },
     "Fairlife Protein Shake (26g)": {
         "Calories": 170,
         "Protein (g)": 26,
         "Sat Fat (g)": 2.5,
-        "Added Sugar (g)": 0
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 3.28
     },
     "Oikos Smoothie Protein Shake": {
         "Calories": 140,
         "Protein (g)": 23,
         "Sat Fat (g)": 1,
-        "Added Sugar (g)": 0
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.54
     },
     "Alani Nu": {
         "Calories": 15,
         "Protein (g)": 0,
         "Sat Fat (g)": 0,
-        "Added Sugar (g)": 0
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.88
     },
     "ICE Sparkling Flavored Water": {
         "Calories": 5,
         "Protein (g)": 0,
         "Sat Fat (g)": 0,
-        "Added Sugar (g)": 0
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.08
+    },
+    "Dr. Pepper Zero Sugar 12oz": {
+        "Calories": 0,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.52
     }
 }

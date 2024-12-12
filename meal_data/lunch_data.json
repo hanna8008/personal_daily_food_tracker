@@ -1,8 +1,65 @@
 {
-    "Pepperoni Pizza Lunchable": {
-        "Calories": 310,
-        "Protein (g)": 13,
+    "Chicken Cheese Quesadilla": {
+        "Calories": 305,
+        "Protein (g)": 40,
+        "Sat Fat (g)": 5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.69
+    },
+    "Chicken Alfredo": {
+        "Calories": 380,
+        "Protein (g)": 45,
+        "Sat Fat (g)": 0.5,
+        "Added Sugar (g)": 1,
+        "Total Cost ($)": 3.11
+    },
+    "Grilled Chicken Breast with Sweet Potato": {
+        "Calories": 314,
+        "Protein (g)": 27,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 17,
+        "Total Cost ($)": 2.04
+    },
+    "Tortilla Pizza": {
+        "Calories": 345,
+        "Protein (g)": 29,
+        "Sat Fat (g)": 9.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.75
+    },
+    "Cheese and Ground Turkey Taco": {
+        "Calories": 380,
+        "Protein (g)": 31,
+        "Sat Fat (g)": 8,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.88
+    },
+    "Hamburger Mac & Cheese": {
+        "Calories": 460,
+        "Protein (g)": 36,
+        "Sat Fat (g)": 5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.69
+    },
+    "Spaghetti with Meat Sauce": {
+        "Calories": 400,
+        "Protein (g)": 36,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 2.69
+    },
+    "Walking Tacos": {
+        "Calories": 360,
+        "Protein (g)": 50,
         "Sat Fat (g)": 6,
-        "Added Sugar (g)": 3
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 4.56
+    },
+    "Grilled Steak with Mashed Potatoes/Twice Baked Potato": {
+        "Calories": 630,
+        "Protein (g)": 30,
+        "Sat Fat (g)": 13,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 3.82
     }
 }

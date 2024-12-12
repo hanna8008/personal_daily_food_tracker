@@ -3,24 +3,28 @@
         "Calories": 535,
         "Protein (g)": 45.3,
         "Sat Fat (g)": 1,
-        "Added Sugar (g)": 4
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 2.99
     },
     "Chocolate Chip Pancakes": {
-        "Calories": 409.7,
-        "Protein (g)": 22.64,
-        "Sat Fat (g)": 5.5,
-        "Added Sugar (g)": 19
+        "Calories": 369.7,
+        "Protein (g)": 21.64,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 3,
+        "Total Cost ($)": 1.41
     },
     "Avocado Bagel": {
         "Calories": 330,
         "Protein (g)": 10,
         "Sat Fat (g)": 1.5,
-        "Added Sugar (g)": 3
+        "Added Sugar (g)": 3,
+        "Total Cost ($)": 2.10
     },
     "Jimmy Dean Turkey Sausage, Cheese, and Egg Breakfast Sandwich": {
         "Calories": 270,
         "Protein (g)": 18,
         "Sat Fat (g)": 3.5,
-        "Added Sugar (g)": 2
+        "Added Sugar (g)": 2,
+        "Total Cost ($)": 2.00
     }
 }
