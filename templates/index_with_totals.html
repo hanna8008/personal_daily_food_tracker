@@ -1,113 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Basic Metadata -->
-    <meta charset="UTF-8"> <!-- Specifies character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures responsive design -->
-    <title>Daily Meal Tracker</title> <!-- Page title displayed in the browser tab -->
-
-    <!-- Include Bootstrap CSS for styling and layout -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Meal Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-
-    <!-- Internal CSS for custom styles -->
     <style>
-        /* Set a light pink background and fun font for the page */
         body {
             background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
         }
 
-        /* Add margin and styling to the container */
         .container {
             margin-top: 50px;
         }
 
-        /* Styling for headers */
-        h1, h3, h4, h5 {
-            font-family: 'Pacifico', cursive; /* Custom font for headers */
-            color: #ff69b4; /* Hot pink color for headers */
+        .section-header {
+            color: #ff69b4;
+            font-family: 'Pacifico', cursive;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        /* Hot pink button styling */
-        .btn-success {
+        .section-divider {
+            border-top: 2px dashed #ff69b4;
+            margin: 20px 0;
+        }
+
+        .card {
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom {
             background-color: #ff69b4;
             border-color: #ff69b4;
+            color: white;
         }
 
-        /* Hover effect for buttons */
-        .btn-success:hover {
+        .btn-custom:hover {
             background-color: #ff1493;
             border-color: #ff1493;
         }
 
-        /* Styling for the Clear Log button */
-        .btn-danger {
-            background-color: #ffccd5;
-            border-color: #ffccd5;
-            color: #d90429; /* Red text */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 15px;
+            margin-top: 30px;
         }
 
-        /* Hover effect for Clear Log button */
-        .btn-danger:hover {
-            background-color: #f08080;
-            border-color: #f08080;
+        .calendar div {
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #fff0f5;
+            text-align: center;
         }
 
-        /* Card borders and backgrounds */
-        .border {
-            border: 3px solid #ff69b4;
-            border-radius: 15px;
-            background-color: #ffffff;
+        .calendar-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ff69b4;
         }
 
-        /* Remove default bullet points and padding for lists */
-        ul {
+        .totals-section ul {
             list-style: none;
             padding: 0;
+            font-size: 16px;
         }
 
-        /* List item styling */
-        li {
-            font-size: 16px;
+        .totals-section ul li {
             color: #333;
             margin-bottom: 5px;
         }
 
-        /* Highlighted text in list items */
-        li strong {
+        .totals-section ul li strong {
             color: #ff69b4;
         }
 
-        /* Styling for dropdowns */
-        select, .form-select {
-            background-color: #fff0f5;
-            border-color: #ff69b4;
-            border-radius: 8px;
+        .action-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
 
-        /* Dashed line separator */
-        .header-divider {
-            border-top: 2px dashed #ff69b4;
-            margin: 20px 0;
+        .total-cost-header {
+            margin-top: 20px;
+            color: #ff1493;
         }
     </style>
-
-    <!-- Import Google Font for custom styling -->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <!-- Main Container -->
     <div class="container text-center">
         <!-- Header -->
-        <h1>✨ Daily Meal Tracker ✨</h1>
+        <h1 class="section-header">✨ Daily Meal Tracker ✨</h1>
         <p style="color: #ff69b4;">Eat for energy, move for joy, and live for the moments that matter. 💪</p>
 
-        <!-- Meal Logs and Totals -->
+        <!-- Divider -->
+        <hr class="section-divider">
+
+        <!-- Today's Meals and Totals Section -->
         <div class="row">
-            <!-- Left Column: Meals -->
             <div class="col-md-6">
-                <h3>Today's Meals</h3>
+                <h3 class="section-header">Today's Meals</h3>
                 {% if log['meals'] %}
                     {% for meal_type, meals in log['meals'].items() %}
                         <h5>{{ meal_type }}</h5>
@@ -118,85 +116,107 @@
                         </ul>
                     {% endfor %}
                 {% else %}
-                    <p>No meals logged yet.</p> <!-- Message if no meals are logged -->
+                    <p>No meals logged yet.</p>
                 {% endif %}
+                <!-- Clear Daily Log Button -->
+                <form method="GET" action="/clear_daily_log" class="mt-3">
+                    <button type="submit" class="btn btn-danger">Clear Daily Meal Log</button>
+                </form>
             </div>
-
-            <!-- Right Column: Totals -->
             <div class="col-md-6">
-                <h3>Today's Totals</h3>
-                <ul>
-                    <li><strong>Calories:</strong> {{ log['totals']['Calories'] }}</li>
-                    <li><strong>Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
-                    <li><strong>Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
-                    <li><strong>Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
-                    <li><strong>Total Cost ($):</strong> {{ log['totals']['Total Cost ($)'] }}</li>
-                </ul>
+                <h3 class="section-header">Today's Totals</h3>
+                <div class="totals-section">
+                    <ul>
+                        <li><strong>Calories:</strong> {{ log['totals']['Calories'] }}</li>
+                        <li><strong>Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
+                        <li><strong>Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
+                        <li><strong>Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
+                        <li><strong>Total Cost ($):</strong> {{ log['totals']['Total Cost ($)']|round(2) }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <!-- Divider -->
-        <div class="header-divider"></div>
+        <hr class="section-divider">
 
-        <!-- Add Meal and Clear Log Buttons -->
+        <!-- Add Meal and Calendar Form Section -->
         <div class="row">
-            <!-- Add Meal Form -->
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header" style="background-color: #ff69b4; color: white;">
-                        <h4>Add a Meal</h4>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="/add">
-                            <!-- Dropdown for meal type -->
-                            <div class="mb-3">
-                                <label for="mealType" class="form-label">Meal Type</label>
-                                <select class="form-select" name="meal_type" id="mealType" required>
-                                    {% for meal_type in meal_data.keys() %}
-                                        <option value="{{ meal_type }}">{{ meal_type }}</option>
+                <div class="card p-3">
+                    <h4>Add a Meal</h4>
+                    <form method="POST" action="/add">
+                        <select name="meal_type" class="form-select mb-3">
+                            {% for meal_type in meal_data.keys() %}
+                                <option value="{{ meal_type }}">{{ meal_type }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="meal_item" class="form-select mb-3">
+                            {% for meal_type, items in meal_data.items() %}
+                                <optgroup label="{{ meal_type }}">
+                                    {% for item_name, item_data in items.items() %}
+                                        <option value="{{ item_name }}">{{ item_name }}</option>
                                     {% endfor %}
-                                </select>
-                            </div>
-                            
-                            <!-- Dropdown for meal items -->
-                            <div class="mb-3">
-                                <label for="mealItem" class="form-label">Meal Item</label>
-                                <select class="form-select" name="meal_item" id="mealItem" required>
-                                    {% for meal_type, items in meal_data.items() %}
-                                        <optgroup label="{{ meal_type }}">
-                                            {% for item_name, item_data in items.items() %}
-                                                <option value="{{ item_name }}">{{ item_name }}</option>
-                                            {% endfor %}
-                                        </optgroup>
-                                    {% endfor %}
-                                </select>
-                            </div>                            
-
-                            <!-- Submit button for adding meals -->
-                            <button type="submit" class="btn btn-success">Add Meal</button>
-                        </form>
-                    </div>
+                                </optgroup>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-custom">Add Meal</button>
+                    </form>
                 </div>
             </div>
-
-            <!-- Clear Log Button -->
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-danger text-white">
-                        <h4>Clear Daily Log</h4>
-                    </div>
-                    <div class="card-body text-center">
-                        <form method="GET" action="/clear">
-                            <!-- Submit button to clear the log -->
-                            <button type="submit" class="btn btn-danger">Clear Log</button>
-                        </form>
-                    </div>
+                <div class="card p-3">
+                    <h4>Add to Monthly Calendar</h4>
+                    <form method="POST" action="/add_to_calendar">
+                        <input type="number" id="day" name="day" min="1" max="30" class="form-control mb-3" placeholder="Day" required>
+                        <select name="meal_type" class="form-select mb-3">
+                            {% for meal_type in meal_data.keys() %}
+                                <option value="{{ meal_type }}">{{ meal_type }}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="meal_item" class="form-select mb-3">
+                            {% for meal_type, items in meal_data.items() %}
+                                <optgroup label="{{ meal_type }}">
+                                    {% for item_name in items.keys() %}
+                                        <option value="{{ item_name }}">{{ item_name }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-custom">Add to Calendar</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Include Bootstrap JS for interactivity -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+        <!-- Divider -->
+        <hr class="section-divider">
+
+        <!-- Monthly Calendar -->
+        <h3 class="section-header">📅 Monthly Calendar</h3>
+        <div class="calendar">
+            {% for day, data in calendar.items() %}
+                <div>
+                    <div class="calendar-header">Day {{ day }}</div>
+                    <ul>
+                        {% for meal in data["meals"] %}
+                            <li>{{ meal }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>Cost:</strong> ${{ data["cost"]|round(2) }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Total Monthly Cost -->
+        <h3>Total Monthly Cost: ${{ calendar.values()|map(attribute='cost')|sum|round(2) }}</h3>
+
+        <!-- Clear Calendar Button -->
+        <div class="action-buttons">
+            <form method="GET" action="/clear_calendar">
+                <button type="submit" class="btn btn-danger">Clear Calendar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
