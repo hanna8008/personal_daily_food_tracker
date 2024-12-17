@@ -115,6 +115,11 @@ def habit_building():
 def add_meals():
     return render_template('add_meals.html')
 
+@app.route('/workouts')
+def workouts():
+    return render_template('workouts.html')
+
+
 '''
 OTHER TABS HERE
 '''

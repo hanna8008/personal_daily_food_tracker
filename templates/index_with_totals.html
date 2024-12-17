@@ -94,11 +94,13 @@
     </style>
 </head>
 <body>
-    <!-- Add this before the <div class="container"> -->
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe4e1;">
         <div class="container-fluid">
             <a class="navbar-brand text-highlight" href="/" 
-            style="font-family: 'Pacifico', cursive; color: #ff69b4; font-size: 2rem;">
+               style="font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2rem; font-weight: bold; 
+                      padding: 8px 15px; background-color: #fffafa; border: 2px dashed #ff69b4; 
+                      border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 🌟 2025: The Year I Show Up for Me 🌟
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,35 +110,46 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" 
-                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                padding: 5px 15px; border: 3px solid #ff69b4; 
-                                border-radius: 10px; background-color: #fffafa; 
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Food Tracker
                         </a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
-                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                padding: 5px 15px; border: 3px solid #ff69b4; 
-                                border-radius: 10px; background-color: #fffafa; 
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Habit Building
+                        <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Add Meals
                         </a>
                     </li>
                     <li class="nav-item ms-2">
-                        <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
-                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                padding: 5px 15px; border: 3px solid #ff69b4; 
-                                border-radius: 10px; background-color: #fffafa; 
-                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Add Meals
+                        <a class="nav-link {% if request.path == '/workouts' %}active{% endif %}" href="/workouts" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Workouts
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Habit Building
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+
 
 
     <div class="container text-center">
