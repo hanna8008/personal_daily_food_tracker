@@ -10,38 +10,32 @@
             background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
         }
-
         .section-header {
             color: #ff69b4;
             font-family: 'Pacifico', cursive;
             margin-top: 20px;
             margin-bottom: 20px;
+            font-size: 2.5rem;
         }
-
-        .section-divider {
-            border-top: 2px dashed #ff69b4;
-            margin: 20px 0;
-        }
-
-        .card {
-            border-radius: 15px;
+        .habit-table {
             background-color: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
-
-        .btn-custom {
+        .habit-table th {
             background-color: #ff69b4;
-            border-color: #ff69b4;
             color: white;
+            text-align: center;
+            font-size: 1.2rem;
         }
-
-        .btn-custom:hover {
-            background-color: #ff1493;
-            border-color: #ff1493;
+        .habit-table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
         }
-
-        .text-highlight {
-            color: #ff69b4;
+        .form-check-input {
+            transform: scale(1.3);
         }
     </style>
 </head>
@@ -55,71 +49,62 @@
                       border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 🌟 2025: The Year I Show Up for Me 🌟
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Food Tracker
-                        </a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Add Meals
-                        </a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link {% if request.path == '/workouts' %}active{% endif %}" href="/workouts" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Workouts
-                        </a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Habit Building
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </nav>    
-       
-    
-    
+    </nav>
 
-    <!-- Main Content -->
-    <div class="container text-center mt-5">
-        <h1 class="section-header">🚀 Habit Building 🚀</h1>
-        <p class="text-highlight">Track your habits, build consistency, and grow into your best self. 🌱</p>
+    <!-- Habit Calendar Section -->
+    <div class="container mt-5">
+        <h1 class="section-header text-center">📅 Habit Calendar 📅</h1>
+        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
+            Stay organized and accountable as you build habits for a better you! 💪
+        </p>
 
-        <!-- Divider -->
-        <hr class="section-divider">
-
-        <!-- Placeholder Content -->
-        <div class="card p-4 mx-auto" style="max-width: 600px;">
-            <h3 class="section-header">Coming Soon!</h3>
-            <p class="text-highlight">
-                We’re working on adding a habit-building feature to help you stay on track. Stay tuned! 💪
-            </p>
-            <button class="btn btn-custom">Learn More</button>
+        <!-- Accordion for Weekly Habits -->
+        <div class="accordion" id="habitAccordion">
+            <!-- Loop for Weeks -->
+            {% for week_num, habits in [
+                (1, ["2 workouts (light strength/cardio)", "Sleep 8 hours nightly", "Drink 64 oz water daily", "Make your bed", "Write 3 things you're grateful for"]),
+                (2, ["3 workouts", "130-150g protein daily", "Plan your day (Top 3 priorities)", "10-min tidy before bed"]),
+                (3, ["3 workouts", "Stretch 5 minutes in the morning", "Daily multivitamin", "Pomodoro timer (25/5 rule)", "Avoid eating after 8 PM"]),
+                (4, ["4 workouts", "Cook 3x at home", "5-min screen breaks hourly", "10-min morning focus", "5-min journal before bed"]),
+                (5, ["4 workouts", "Organize workspace weekly", "Nature time 1x/week", "Call/text loved one weekly", "30-min skill learning weekly"]),
+                (6, ["Positive affirmations daily", "Replace sugary drinks with water/tea", "1-min deep breathing when stressed", "1 screen-free meal daily"]),
+                (7, ["Track habits with tracker", "Compliment someone daily", "Save $5-10 daily", "Declutter small area weekly"]),
+                (8, ["Listen actively", "1 day/week for hobbies", "Replace negative thoughts", "Weekly progress review"]),
+                (9, ["Celebrate small achievements", "Write 3 daily wins", "Monthly catch-ups with friends", "Create a vision board"]),
+                (10, ["Avoid multitasking", "Deepen journaling reflections", "Review and refine habits"]),
+                (11, ["Compliment yourself daily", "1 motivational podcast/week", "Weekly goal and habit check-ins"]),
+                (12, ["Review all 52 habits", "Refine routines", "Celebrate success", "10-min walk after meals"])
+            ] %}
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingWeek{{ week_num }}">
+                    <button class="accordion-button {% if week_num > 1 %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWeek{{ week_num }}" aria-expanded="{% if week_num == 1 %}true{% else %}false{% endif %}" aria-controls="collapseWeek{{ week_num }}">
+                        Week {{ week_num }}
+                    </button>
+                </h2>
+                <div id="collapseWeek{{ week_num }}" class="accordion-collapse collapse {% if week_num == 1 %}show{% endif %}" aria-labelledby="headingWeek{{ week_num }}" data-bs-parent="#habitAccordion">
+                    <div class="accordion-body">
+                        <table class="table table-bordered habit-table">
+                            <thead>
+                                <tr><th>Habit</th><th>Track Progress</th></tr>
+                            </thead>
+                            <tbody>
+                                {% for habit in habits %}
+                                <tr>
+                                    <td>{{ habit }}</td>
+                                    <td><input type="checkbox" class="form-check-input"></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
