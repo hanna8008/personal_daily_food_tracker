@@ -1,4 +1,4 @@
-# Personal Project - Daily Meal Tracker
+# Personal Project - Showing Up for Me
 
 A user-friendly web application to track daily meals, build habits, track workouts, and organize your year. This project serves as a comprehensive personal hub for:
 
