@@ -6,31 +6,112 @@
     <title>Add Meals</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
+        /* Body and global text settings */
         body {
             background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            font-size: 1.1rem; /* Larger default font */
+            line-height: 1.6; /* Better spacing */
+            color: #333; /* Darker text for readability */
         }
-        .section-header {
-            color: #ff69b4;
+        
+        /* Header styles */
+        h1, h2, h3 {
+            color: #ff1493;
             font-family: 'Pacifico', cursive;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            text-align: center;
         }
-        .card {
-            border-radius: 15px;
-            background-color: #fff;
+        
+        h1 {
+            font-size: 3rem; /* Larger main header */
+            margin-top: 30px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Navigation bar adjustment */
+        .navbar {
+            padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-    </style>
+        
+        .navbar-brand {
+            font-size: 2.2rem; /* Bigger for visibility */
+            padding: 12px 20px;
+        }
+        
+        .nav-link {
+            font-size: 1.3rem; /* Make nav links bigger */
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .nav-link:hover {
+            background-color: #fffafa;
+            border-radius: 10px;
+            color: #ff1493 !important;
+        }
+        
+        /* Centered page content */
+        .content-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        /* Welcome text adjustment */
+        .welcome-text {
+            color: #ff69b4;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Responsiveness for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .nav-link {
+                font-size: 1.1rem;
+            }
+        }
+        </style>
+        <style>
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+            padding: 5px 15px;
+        }
+    
+        .nav-link:hover {
+            background-color: #fffafa;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            color: #ff1493 !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+    </style> 
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe4e1;">
         <div class="container-fluid">
-            <a class="navbar-brand text-highlight" href="/" 
-               style="font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2rem; font-weight: bold; 
-                      padding: 8px 15px; background-color: #fffafa; border: 2px dashed #ff69b4; 
-                      border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <a class="navbar-brand text-highlight" href="/home" 
+            style="font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2rem; font-weight: bold; 
+                    padding: 8px 15px; background-color: #fffafa; border: 2px dashed #ff69b4; 
+                    border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 🌟 2025: The Year I Show Up for Me 🌟
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,45 +120,55 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/home' %}active{% endif %}" href="/home" 
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Food Tracker
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Add Meals
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/workouts' %}active{% endif %}" href="/workouts" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Workouts
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Habit Building
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>    
+    </nav>
+   
     
 
     <!-- Main Content -->

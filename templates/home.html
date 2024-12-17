@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Habit Building</title>
+    <title>Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
         /* Body and global text settings */
@@ -88,6 +88,7 @@
             }
         }
         </style>
+        
         <style>
         .nav-link {
             transition: all 0.3s ease-in-out;
@@ -102,7 +103,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-decoration: none;
         }
-    </style> 
+    </style>  
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -169,61 +170,26 @@
         </div>
     </nav>
 
-
-    <!-- Habit Calendar Section -->
-    <div class="container mt-5">
-        <h1 class="section-header text-center">📅 Habit Calendar 📅</h1>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            Stay organized and accountable as you build habits for a better you! 💪
+    <!-- Content Section -->
+    <div class="content-container">
+        <h1 class="welcome-header">🌟 Welcome to Your Journey 🌟</h1>
+        <p class="welcome-text">
+            This website is your personal hub to track meals, habits, and workouts while staying accountable to yourself in 2025. 
+            Start showing up for YOU and let’s achieve your goals together!
         </p>
 
-        <!-- Accordion for Weekly Habits -->
-        <div class="accordion" id="habitAccordion">
-            {% set weeks = [
-                (1, "Jan 01 - Jan 07", ["2 workouts (light strength/cardio)", "Sleep 8 hours nightly", "Drink 64 oz water daily", "Make your bed", "Write 3 things you're grateful for"]),
-                (2, "Jan 08 - Jan 14", ["3 workouts", "130-150g protein daily", "Plan your day (Top 3 priorities)", "10-min tidy before bed", "10-min walk after meals"]),
-                (3, "Jan 15 - Jan 21", ["3 workouts", "Stretch 5 minutes in the morning", "Daily multivitamin", "Pomodoro timer (25/5 rule)", "Avoid eating after 8 PM"]),
-                (4, "Jan 22 - Jan 28", ["4 workouts", "Cook 3x at home", "5-min screen breaks hourly", "10-min morning focus", "5-min journal before bed"]),
-                (5, "Jan 29 - Feb 04", ["4 workouts", "Organize workspace weekly", "Nature time 1x/week", "Call/text loved one weekly", "30-min skill learning weekly"]),
-                (6, "Feb 05 - Feb 11", ["5 workouts", "Positive affirmations daily", "Replace sugary drinks with water/tea", "1-min deep breathing when stressed", "1 screen-free meal daily"]),
-                (7, "Feb 12 - Feb 18", ["5 workouts", "Track habits with tracker", "Compliment someone daily", "Save $5-10 daily", "Declutter small area weekly"]),
-                (8, "Feb 19 - Feb 25", ["5 workouts", "Listen actively", "1 day/week for hobbies", "Replace negative thoughts", "Weekly progress review"]),
-                (9, "Feb 26 - Mar 04", ["5 workouts", "Celebrate small achievements", "Write 3 daily wins", "Monthly catch-ups with friends", "Create a vision board"]),
-                (10, "Mar 05 - Mar 11", ["5 workouts", "Avoid multitasking", "Deepen journaling reflections", "Review and refine habits"]),
-                (11, "Mar 12 - Mar 18", ["5 workouts", "Compliment yourself daily", "1 motivational podcast/week", "Weekly goal and habit check-ins"]),
-                (12, "Mar 19 - Mar 25", ["5 workouts", "Review all 52 habits", "Refine routines", "Celebrate success"])
-            ] %}
-            
-            <div class="accordion" id="habitAccordion">
-                {% for week_num, dates, habits in weeks %}
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingWeek{{ week_num }}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
-                                data-bs-target="#collapseWeek{{ week_num }}" aria-expanded="false" 
-                                aria-controls="collapseWeek{{ week_num }}">
-                            Week {{ week_num }}: {{ dates }}
-                        </button>
-                    </h2>
-                    <div id="collapseWeek{{ week_num }}" class="accordion-collapse collapse" aria-labelledby="headingWeek{{ week_num }}">
-                        <div class="accordion-body">
-                            <table class="table table-bordered habit-table">
-                                <thead>
-                                    <tr><th>Habit</th><th>Track Progress</th></tr>
-                                </thead>
-                                <tbody>
-                                    {% for habit in habits %}
-                                    <tr>
-                                        <td>{{ habit }}</td>
-                                        <td><input type="checkbox" class="form-check-input"></td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+        <!-- Add a Photo -->
+        <div style="display: flex; justify-content: center; margin: 20px 0;">
+            <img src="{{ url_for('static', filename='images/welcome_photo.jpg') }}" alt="Welcome Photo" 
+                 style="max-width: 100%; height: auto; border: 5px solid #ff69b4; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        </div>
+        
+
+        <p class="welcome-text">Explore your habits, add meals, and smash your workouts! 🎉</p>
+
+        <!-- Button to Navigate -->
+        <a href="/habit_building" class="btn btn-custom">Start Building Habits 🚀</a>
+    </div>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

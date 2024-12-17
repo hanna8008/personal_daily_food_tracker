@@ -119,6 +119,9 @@ def add_meals():
 def workouts():
     return render_template('workouts.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 '''
 OTHER TABS HERE

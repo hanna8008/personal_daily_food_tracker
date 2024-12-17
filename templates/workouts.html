@@ -6,31 +6,112 @@
     <title>Workouts</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
+        /* Body and global text settings */
         body {
             background-color: #ffe4e1;
             font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            font-size: 1.1rem; /* Larger default font */
+            line-height: 1.6; /* Better spacing */
+            color: #333; /* Darker text for readability */
         }
-        .section-header {
-            color: #ff69b4;
+        
+        /* Header styles */
+        h1, h2, h3 {
+            color: #ff1493;
             font-family: 'Pacifico', cursive;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            text-align: center;
         }
-        .card {
-            border-radius: 15px;
-            background-color: #fff;
+        
+        h1 {
+            font-size: 3rem; /* Larger main header */
+            margin-top: 30px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-top: 20px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Navigation bar adjustment */
+        .navbar {
+            padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-    </style>
+        
+        .navbar-brand {
+            font-size: 2.2rem; /* Bigger for visibility */
+            padding: 12px 20px;
+        }
+        
+        .nav-link {
+            font-size: 1.3rem; /* Make nav links bigger */
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .nav-link:hover {
+            background-color: #fffafa;
+            border-radius: 10px;
+            color: #ff1493 !important;
+        }
+        
+        /* Centered page content */
+        .content-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        /* Welcome text adjustment */
+        .welcome-text {
+            color: #ff69b4;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Responsiveness for smaller screens */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .nav-link {
+                font-size: 1.1rem;
+            }
+        }
+        </style>
+    <style>
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+            padding: 5px 15px;
+        }
+    
+        .nav-link:hover {
+            background-color: #fffafa;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            color: #ff1493 !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+    </style>    
 </head>
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe4e1;">
         <div class="container-fluid">
-            <a class="navbar-brand text-highlight" href="/" 
-               style="font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2rem; font-weight: bold; 
-                      padding: 8px 15px; background-color: #fffafa; border: 2px dashed #ff69b4; 
-                      border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <a class="navbar-brand text-highlight" href="/home" 
+            style="font-family: 'Pacifico', cursive; color: #ff1493; font-size: 2rem; font-weight: bold; 
+                    padding: 8px 15px; background-color: #fffafa; border: 2px dashed #ff69b4; 
+                    border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
                 🌟 2025: The Year I Show Up for Me 🌟
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,38 +120,47 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/home' %}active{% endif %}" href="/home" 
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Food Tracker
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Add Meals
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/workouts' %}active{% endif %}" href="/workouts" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Workouts
                         </a>
                     </li>
                     <li class="nav-item ms-2">
                         <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
-                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
-                                  padding: 5px 15px; border: 3px solid #ff69b4; 
-                                  border-radius: 10px; background-color: #fffafa; 
-                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                        style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                padding: 5px 15px; border: 3px solid #ff69b4; 
+                                border-radius: 10px; background-color: #fffafa; 
+                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
                             Habit Building
                         </a>
                     </li>
@@ -78,17 +168,367 @@
             </div>
         </div>
     </nav>
-    
 
-    <!-- Main Content -->
-    <div class="container text-center mt-5">
-        <h1 class="section-header">🏋️ Workouts 🏋️</h1>
-        <p>Track your workouts, stay strong, and achieve your fitness goals!</p>
+    <!-- Workouts Page -->
+    <div class="container mt-5">
+        <h1 class="section-header text-center">🏋️ Workout Splits 🏋️</h1>
+        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
+            Tailored splits to help you focus on glutes, strength, and overall toning!
+        </p>
 
-        <div class="card p-4 mx-auto" style="max-width: 600px;">
-            <h3>Coming Soon</h3>
-            <p class="text-highlight">The "Workouts" feature is under development. Stay tuned for updates! 💪</p>
+        <!-- Main Accordion for Splits -->
+        <div class="accordion" id="workoutAccordion">
+            <!-- 2-Week Split -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading2Week">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2Week" aria-expanded="true" aria-controls="collapse2Week">
+                        2 Week Split
+                    </button>
+                </h2>
+                <div id="collapse2Week" class="accordion-collapse collapse show" aria-labelledby="heading2Week">
+                    <div class="accordion-body">
+                        <!-- Nested Accordion for Days -->
+                        <div class="accordion" id="week2Accordion">
+                            <!-- Day 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay1" aria-expanded="true" aria-controls="collapseDay1">
+                                        Day 1: Full Body (Glutes + Core Focus)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay1" class="accordion-collapse collapse show" aria-labelledby="headingDay1">
+                                    <div class="accordion-body">
+                                        <!-- Exercises -->
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> BB Hip Thrusts: 4x8-10 (60-90 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Romanian Deadlifts: 4x10 (25-32.5 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Bulgarian Split Squats: 3x8 (Bodyweight, 5 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Hamstring Curls: 3x10 (40-45 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Leg Lifts: 4xAMRAP</li>
+                                            <li><input type="checkbox" class="form-check-input"> Plank: 3x30 seconds</li>
+                                            <li><input type="checkbox" class="form-check-input"> Incline Walk: 10 min @ 12%, 3.0 mph</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay2" aria-expanded="false" aria-controls="collapseDay2">
+                                        Day 2: Full Body (Back + Glutes + Core)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay2" class="accordion-collapse collapse" aria-labelledby="headingDay2">
+                                    <div class="accordion-body">
+                                        <!-- Exercises -->
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> DB Bench Press: 4x10 (10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Assisted Push-Ups: 3xAMRAP (135-120 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Shoulder Press: 3x10 (10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Lateral Raises: 3x12 (5 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Rows: 3x10 (40-50 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Russian Twists: 3x20</li>
+                                            <li><input type="checkbox" class="form-check-input"> Dead Bugs: 3x12</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Nested Accordion -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3-Week Split -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading3Week">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3Week" aria-expanded="false" aria-controls="collapse3Week">
+                        3 Week Split
+                    </button>
+                </h2>
+                <div id="collapse3Week" class="accordion-collapse collapse" aria-labelledby="heading3Week">
+                    <div class="accordion-body">
+                        <!-- Nested Accordion for Days -->
+                        <div class="accordion" id="week3Accordion">
+                            <!-- Day 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay1Week3">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay1Week3" aria-expanded="true" aria-controls="collapseDay1Week3">
+                                        Day 1: Lower Body (Glutes + Hamstrings)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay1Week3" class="accordion-collapse collapse show" aria-labelledby="headingDay1Week3">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> BB Hip Thrusts: 4x8-10 (70-100 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Romanian Deadlifts: 4x10 (27.5-35 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Side-Lift Donkey Kicks: 3x12 (Bodyweight, 10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Hamstring Curls: 4x10 (45 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Leg Lifts: 4xAMRAP</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay2Week3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay2Week3" aria-expanded="false" aria-controls="collapseDay2Week3">
+                                        Day 2: Upper Body Push (Chest, Shoulders, Triceps)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay2Week3" class="accordion-collapse collapse" aria-labelledby="headingDay2Week3">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> DB Bench Press: 4x10 (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Chest Flies (Machine): 3x12 (15-20 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Shoulder Press: 4x10 (10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Rope Tricep Extensions: 4x10-12 (10-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Lateral Raises: 3x12 (5 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Plank: 3x30 seconds</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay3Week3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay3Week3" aria-expanded="false" aria-controls="collapseDay3Week3">
+                                        Day 3: Full Body + Core
+                                    </button>
+                                </h2>
+                                <div id="collapseDay3Week3" class="accordion-collapse collapse" aria-labelledby="headingDay3Week3">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Goblet Squats: 4x10 (10-20 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Smith Machine Lunges: 3x8 (Bodyweight, 10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Rows: 4x10 (40-50 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Lat Pulldowns: 4x10 (40 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Russian Twists: 3x20</li>
+                                            <li><input type="checkbox" class="form-check-input"> Incline Walk: 10 min @ 12%, 3.0 mph</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Nested Accordion -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Week Split -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading4Week">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4Week" aria-expanded="false" aria-controls="collapse4Week">
+                        4 Week Split
+                    </button>
+                </h2>
+                <div id="collapse4Week" class="accordion-collapse collapse" aria-labelledby="heading4Week">
+                    <div class="accordion-body">
+                        <!-- Nested Accordion for Days -->
+                        <div class="accordion" id="week4Accordion">
+                            <!-- Day 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay1Week4">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay1Week4" aria-expanded="true" aria-controls="collapseDay1Week4">
+                                        Day 1: Lower Body (Glutes Focus)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay1Week4" class="accordion-collapse collapse show" aria-labelledby="headingDay1Week4">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> BB Hip Thrusts: 4x8-10 (80-110 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Romanian Deadlifts: 4x10 (30-37.5 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Bulgarian Split Squats (Glute Bias): 3x10 (8-10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Glute Bridge (Feet Elevated): 4x10-12 (Bodyweight or add 15-20 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Kickbacks: 4x12 (10-12.5 lbs)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay2Week4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay2Week4" aria-expanded="false" aria-controls="collapseDay2Week4">
+                                        Day 2: Upper Body Push (Chest, Shoulders, Triceps)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay2Week4" class="accordion-collapse collapse" aria-labelledby="headingDay2Week4">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> DB Bench Press: 4x10-12 (12-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Shoulder Press: 4x10 (12-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Chest Flies (Machine): 4x10-12 (20 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Tricep Rope Extensions: 4x10-12 (12.5-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Lateral Raises: 4x12 (5-8 lbs)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay3Week4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay3Week4" aria-expanded="false" aria-controls="collapseDay3Week4">
+                                        Day 3: Lower Body (Glutes + Quads)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay3Week4" class="accordion-collapse collapse" aria-labelledby="headingDay3Week4">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Smith Machine Squats (Glute Bias): 4x8-10 (50-80 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Step-Ups (Glute Focus): 3x10 per leg (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Leg Press (Glute Bias - Feet High): 4x10 (90-130 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Hip Abduction Machine: 4x12 (40-45 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Pull-Throughs: 4x12 (12.5-15 lbs)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 4 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay4Week4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay4Week4" aria-expanded="false" aria-controls="collapseDay4Week4">
+                                        Day 4: Upper Body Pull (Back, Biceps)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay4Week4" class="accordion-collapse collapse" aria-labelledby="headingDay4Week4">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Lat Pulldowns: 4x10-12 (40-50 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Rows: 4x10 (45-55 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Face Pulls (Cable): 4x12 (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Bicep Curls: 4x12 (8-10 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> TRX Pull-Ups (Assisted): 4x10</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Nested Accordion -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Week Split -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading5Week">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5Week" aria-expanded="false" aria-controls="collapse5Week">
+                        5 Week Split
+                    </button>
+                </h2>
+                <div id="collapse5Week" class="accordion-collapse collapse" aria-labelledby="heading5Week">
+                    <div class="accordion-body">
+                        <!-- Nested Accordion for Days -->
+                        <div class="accordion" id="week5Accordion">
+                            <!-- Day 1 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay1Week5">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay1Week5" aria-expanded="true" aria-controls="collapseDay1Week5">
+                                        Day 1: Lower Body (Glutes + Hamstrings)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay1Week5" class="accordion-collapse collapse show" aria-labelledby="headingDay1Week5">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> BB Hip Thrusts: 4x8-10 (90-120 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Romanian Deadlifts: 4x10 (35-40 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Good Mornings (Barbell): 3x12 (40-60 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Side-Lift Donkey Kicks: 4x12 (10-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Kickbacks: 4x12 (12.5-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Glute Bridge (Barbell): 4x12 (60-70 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Incline Walk: 15 min @ 12-13%, 3.0 mph</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 2 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay2Week5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay2Week5" aria-expanded="false" aria-controls="collapseDay2Week5">
+                                        Day 2: Upper Body Push (Chest, Shoulders, Triceps)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay2Week5" class="accordion-collapse collapse" aria-labelledby="headingDay2Week5">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> DB Bench Press: 4x10-12 (15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Incline DB Bench Press: 4x10 (12-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Shoulder Press: 4x10 (12-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Chest Flies (Machine): 4x10-12 (20-25 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Rope Tricep Extensions: 4x12 (12.5-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Lateral Raises: 4x12 (5-8 lbs)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 3 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay3Week5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay3Week5" aria-expanded="false" aria-controls="collapseDay3Week5">
+                                        Day 3: Lower Body (Glutes + Quads)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay3Week5" class="accordion-collapse collapse" aria-labelledby="headingDay3Week5">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Smith Machine Squats (Glute Bias): 4x8-10 (60-80 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Leg Press (Feet High and Wide): 4x10 (110-140 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Bulgarian Split Squats (Glute Focus): 3x10 (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Hip Abduction Machine: 4x12 (40-45 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Cable Pull-Throughs: 4x12 (12.5-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Calf Raises: 4x12 (Bodyweight)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 4 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay4Week5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay4Week5" aria-expanded="false" aria-controls="collapseDay4Week5">
+                                        Day 4: Upper Body Pull (Back + Core)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay4Week5" class="accordion-collapse collapse" aria-labelledby="headingDay4Week5">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Lat Pulldowns (Wide Grip): 4x10-12 (40-50 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Seated Cable Rows: 4x12 (45-55 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> DB Bent-Over Rows: 4x12 (12-15 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Face Pulls (Cable): 4x12 (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> TRX Pull-Ups (Assisted): 4xAMRAP</li>
+                                            <li><input type="checkbox" class="form-check-input"> Leg Lifts: 4xAMRAP</li>
+                                            <li><input type="checkbox" class="form-check-input"> Plank with Shoulder Taps: 3x20 taps</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Day 5 -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingDay5Week5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDay5Week5" aria-expanded="false" aria-controls="collapseDay5Week5">
+                                        Day 5: Full Body (Glutes + Core Focus)
+                                    </button>
+                                </h2>
+                                <div id="collapseDay5Week5" class="accordion-collapse collapse" aria-labelledby="headingDay5Week5">
+                                    <div class="accordion-body">
+                                        <ul class="list-unstyled">
+                                            <li><input type="checkbox" class="form-check-input"> Smith Machine Hip Thrusts: 4x8-10 (90-110 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Step-Ups (Glute Focus): 3x10 per side (10-12 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Goblet Squats: 4x12 (15-20 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Seated Cable Rows: 4x12 (45-50 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Reverse-Grip Lat Pulldowns: 3x12 (40 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Hip Abduction Machine: 4x12 (40 lbs)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Russian Twists: 3x20 (Bodyweight)</li>
+                                            <li><input type="checkbox" class="form-check-input"> Incline Walk: 15 min @ 13%, 3.0 mph</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- End Nested Accordion -->
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
