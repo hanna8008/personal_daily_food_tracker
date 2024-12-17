@@ -1,4 +1,4 @@
-# Personal Project - Showing Up for Me
+# 2025: The Year I Show Up for Me
 
 A user-friendly web application to track daily meals, build habits, track workouts, and organize your year. This project serves as a comprehensive personal hub for:
 
