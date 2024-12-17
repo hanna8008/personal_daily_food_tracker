@@ -1,10 +1,11 @@
 # Personal Project - Daily Meal Tracker
 
-A user-friendly web application to track daily meals, calculate nutritional totals, and manage food data. The project allows users to:
+A user-friendly web application to track daily meals, build habits, track workouts, and organize your year. This project serves as a comprehensive personal hub for:
 
-- Log meals by category (e.g., Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
-- Automatically calculate totals for calories, protein, saturated fat, and added sugar.
-- Clear the daily log as needed.
+- Logging meals and calculating daily nutritional totals.
+- Building and tracking habits with a dynamic habit calendar.
+- Organizing structured workouts based on split schedules (2, 3, 4, and 5-day splits).
+- A personal homepage to inspire and reflect progress.
 
 The application is built using **Flask** for the backend and **HTML/CSS with Bootstrap** for the frontend.
 
@@ -13,13 +14,41 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 ## Features
 
 ### 1. Track Meals
-- Select meal type (e.g., Breakfast, Lunch).
-- Choose meal items from predefined options.
-- View totals for calories, protein, saturated fat, and added sugar for the day.
+- Select meal type (e.g., Breakfast, Lunch, Dinner, Snack, Drinks).
+- Choose meal items from predefined options stored in JSON files.
+- Automatically calculate totals for:
+  - Calories
+  - Protein
+  - Saturated Fat
+  - Added Sugar
+  - Cost
 
-### 2. Clear Daily Log
-- Reset the daily log to start fresh.
+### 2. Habit Building
+- A 12-week dynamic habit calendar to track daily and weekly goals.
+- Includes pre-set habits such as workouts, gratitude journaling, and productivity routines.
+- Interactive checkboxes to mark progress for each habit.
 
+### 3. Workouts
+- Organized workouts with a split-based structure:
+  - **2-Day Split**
+  - **3-Day Split**
+  - **4-Day Split**
+  - **5-Day Split**
+- Each day provides detailed exercises, repetitions, and weight suggestions.
+- Easy-to-use dropdowns for navigating between weeks and days.
+
+### 4. Home Page
+- A central hub with motivational content and personal progress photos.
+- Encouraging message to inspire daily accountability and progress.
+
+### 5. Navigation Bar
+- Intuitive and responsive navigation links:
+  - **Home**
+  - **Food Tracker**
+  - **Add Meals**
+  - **Workouts**
+  - **Habit Building**
+- Styled with hover effects and a clean user interface.
 
 ---
 
@@ -29,12 +58,12 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 - **Flask**: Python framework for routing and backend logic.
 
 ### Frontend
-- **HTML/CSS**: Structure and styling of web pages.
-- **Bootstrap**: Responsive design and consistent UI components.
-- **JavaScript**: For dynamic dropdowns and user interactivity.
+- **HTML/CSS**: Structured and styled pages.
+- **Bootstrap**: Ensures responsive and consistent UI components.
+- **JavaScript**: Dynamic dropdowns, interactivity, and animations.
 
 ### Data Storage
-- **JSON**: Store meal data and daily logs for lightweight and easy-to-edit storage.
+- **JSON**: Lightweight storage for meal data and logs.
 
 ---
 
@@ -44,8 +73,14 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 .
 ├── app.py                  # Flask backend
 ├── templates/              # HTML templates
-│   ├── index_with_totals.html  # Main page template
-│   ├── add_food.html           # Add Food page template
+│   ├── home.html               # Home page template
+│   ├── index_with_totals.html  # Food tracker page
+│   ├── add_meals.html          # Add meals page
+│   ├── habit_building.html     # Habit building page
+│   ├── workouts.html           # Workouts page
+├── static/                 # Static files (CSS, JS, images)
+│   ├── styles.css              # Custom CSS for styling
+│   └── images/                 # User-added images
 ├── meal_data/              # JSON files for meal data
 │   ├── breakfast_data.json
 │   ├── lunch_data.json
@@ -53,10 +88,19 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 │   ├── dessert_data.json
 │   ├── snack_data.json
 │   └── drinks_data.json
-├── static/                 # Static files (CSS, JS, images)
 ├── daily_log.json          # Daily log file
-└── README.md               # Documentation
+├── README.md               # Project documentation
+└── LICENSE                 # License file
 ```
+
+---
+
+## Future Enhancements
+- **User Authentication**: Add user profiles for personalized tracking.
+- **Visual Analytics**: Graphs and charts for habits, meals, and workouts.
+- **Customizable Habits and Workouts**: Add personal routines and goals.
+- **Export Feature**: Export logs to PDF or CSV for sharing or review.
+- **Mobile-Friendly Optimization**: Ensure seamless access on all devices.
 
 ---
 
@@ -66,18 +110,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## Future Enhancements
-
-- New Tab  that dynamically adds new food items to each category:
-   1. Add new food items to any of the six categories (Breakfast, Lunch, Dinner, Dessert, Snack, Drinks).
-   2. Provide nutritional information (calories, protein, saturated fat, and added sugar).
-- Add authentication for multi-user tracking.
-- Implement charts for visualizing nutritional trends.
-- Add export functionality for logs (e.g., CSV, PDF).
-
-
----
-
 ## Contact
 
-Developed by **Hanna Zelis**
+Developed by **Hanna Zelis**.
