@@ -102,5 +102,23 @@ def clear_daily_log():
     }
     return redirect(url_for("index"))
 
+
+'''
+ADDING ACCESS TO OTHER TABS HERE
+'''
+
+@app.route('/habit_building')
+def habit_building():
+    return render_template('habit_building.html')
+
+@app.route('/add_meals')
+def add_meals():
+    return render_template('add_meals.html')
+
+'''
+OTHER TABS HERE
+'''
+
+
 if __name__ == "__main__":
     app.run(debug=True)

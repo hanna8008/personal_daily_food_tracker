@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Building</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffe4e1;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+        }
+
+        .section-header {
+            color: #ff69b4;
+            font-family: 'Pacifico', cursive;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section-divider {
+            border-top: 2px dashed #ff69b4;
+            margin: 20px 0;
+        }
+
+        .card {
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-custom {
+            background-color: #ff69b4;
+            border-color: #ff69b4;
+            color: white;
+        }
+
+        .btn-custom:hover {
+            background-color: #ff1493;
+            border-color: #ff1493;
+        }
+
+        .text-highlight {
+            color: #ff69b4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffe4e1;">
+        <div class="container-fluid">
+            <a class="navbar-brand text-highlight" href="/" 
+               style="font-family: 'Pacifico', cursive; color: #ff69b4; font-size: 2rem;">
+                🌟 2025: The Year I Show Up for Me 🌟
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="/" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Food Tracker
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link {% if request.path == '/habit_building' %}active{% endif %}" href="/habit_building" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Habit Building
+                        </a>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <a class="nav-link {% if request.path == '/add_meals' %}active{% endif %}" href="/add_meals" 
+                           style="color: #ff69b4; font-weight: bold; font-size: 1.2rem; 
+                                  padding: 5px 15px; border: 3px solid #ff69b4; 
+                                  border-radius: 10px; background-color: #fffafa; 
+                                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                            Add Meals
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>         
+    
+    
+
+    <!-- Main Content -->
+    <div class="container text-center mt-5">
+        <h1 class="section-header">🚀 Habit Building 🚀</h1>
+        <p class="text-highlight">Track your habits, build consistency, and grow into your best self. 🌱</p>
+
+        <!-- Divider -->
+        <hr class="section-divider">
+
+        <!-- Placeholder Content -->
+        <div class="card p-4 mx-auto" style="max-width: 600px;">
+            <h3 class="section-header">Coming Soon!</h3>
+            <p class="text-highlight">
+                We’re working on adding a habit-building feature to help you stay on track. Stay tuned! 💪
+            </p>
+            <button class="btn btn-custom">Learn More</button>
+        </div>
+    </div>
+</body>
+</html>
