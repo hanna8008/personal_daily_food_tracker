@@ -38,41 +38,6 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 
 ---
 
-## Installation
-
-### Prerequisites
-- Python 3.x
-
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/daily-meal-tracker.git
-   cd daily-meal-tracker
-   ```
-
-2. Create a virtual environment (optional but recommended):
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install flask
-   ```
-
-4. Run the application:
-   ```bash
-   python app.py
-   ```
-
-5. Open your browser and navigate to:
-   ```
-   http://127.0.0.1:5000/
-   ```
-
----
-
 ## File Structure
 
 ```
