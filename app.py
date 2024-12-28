@@ -1,8 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_sqlalchemy import SQLAlchemy
 import os
 import json
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///books.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+# Database Models
+class ToReadBook(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    author = db.Column(db.String(200), nullable=False)
+    isbn = db.Column(db.String(13), nullable=False)
+    image = db.Column(db.String(300), nullable=True)
+
+class ReadBook(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200), nullable=False)
+    author = db.Column(db.String(200), nullable=False)
+    isbn = db.Column(db.String(13), nullable=False)
+    date_completed = db.Column(db.String(50), nullable=False)
+
+# Create the database tables
+with app.app_context():
+    db.create_all()
 
 # Helper function to load meal data from a specific file
 def load_meal_data(filename):
@@ -128,8 +151,60 @@ def books():
     return render_template('books.html')
 
 '''
-OTHER TABS HERE
+END
 '''
+
+
+@app.route('/api/books/to-read', methods=['GET', 'POST'])
+def manage_to_read_books():
+    if request.method == 'POST':
+        data = request.json
+        new_book = ToReadBook(
+            title=data['title'],
+            author=data['author'],
+            isbn=data['isbn'],
+            image=data['image']
+        )
+        db.session.add(new_book)
+        db.session.commit()
+        return jsonify({'message': 'Book added successfully'}), 201
+    else:
+        books = ToReadBook.query.all()
+        return jsonify([
+            {'id': book.id, 'title': book.title, 'author': book.author, 'isbn': book.isbn, 'image': book.image}
+            for book in books
+        ])
+
+
+@app.route('/api/books/read', methods=['GET', 'POST'])
+def manage_read_books():
+    if request.method == 'POST':
+        data = request.json
+        new_book = ReadBook(
+            title=data['title'],
+            author=data['author'],
+            isbn=data['isbn'],
+            date_completed=data['date']
+        )
+        db.session.add(new_book)
+        db.session.commit()
+        return jsonify({'message': 'Book added successfully'}), 201
+    else:
+        books = ReadBook.query.all()
+        return jsonify([
+            {'id': book.id, 'title': book.title, 'author': book.author, 'isbn': book.isbn, 'date': book.date_completed}
+            for book in books
+        ])
+
+
+@app.route('/api/books/to-read/<int:id>', methods=['DELETE'])
+def delete_to_read_book(id):
+    book = ToReadBook.query.get_or_404(id)
+    db.session.delete(book)
+    db.session.commit()
+    return jsonify({'message': 'Book deleted successfully'})
+
+
 
 
 if __name__ == "__main__":

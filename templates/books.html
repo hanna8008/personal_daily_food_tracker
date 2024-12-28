@@ -26,6 +26,17 @@
             background-color: #ff1493;
             border-color: #ff1493;
         }
+        .btn-delete {
+            background-color: #ffcccc;
+            color: #ff0000;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .btn-delete:hover {
+            background-color: #ff9999;
+        }
         .table {
             margin-top: 30px;
             border: 2px solid #ff69b4;
@@ -133,6 +144,9 @@
                 <input type="text" id="to-read-author" class="form-control" placeholder="Author" required>
             </div>
             <div class="mb-3">
+                <input type="text" id="to-read-isbn" class="form-control" placeholder="ISBN-13" required>
+            </div>
+            <div class="mb-3">
                 <input type="file" id="to-read-image" class="form-control" accept="image/*" required>
             </div>
             <button type="submit" class="btn btn-custom">Add to List</button>
@@ -144,6 +158,8 @@
                     <th>Book Image</th>
                     <th>Book Title</th>
                     <th>Author</th>
+                    <th>ISBN-13</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -162,6 +178,9 @@
                 <input type="text" id="read-author" class="form-control" placeholder="Author" required>
             </div>
             <div class="mb-3">
+                <input type="text" id="read-isbn" class="form-control" placeholder="ISBN-13" required>
+            </div>
+            <div class="mb-3">
                 <input type="date" id="read-date" class="form-control" required>
             </div>
             <button type="submit" class="btn btn-custom">Add to List</button>
@@ -172,6 +191,7 @@
                 <tr>
                     <th>Book Title</th>
                     <th>Author</th>
+                    <th>ISBN-13</th>
                     <th>Date Completed</th>
                 </tr>
             </thead>
@@ -181,57 +201,80 @@
     </div>
 
     <script>
-        // Handle "Books I Want to Read"
-        const toReadForm = document.getElementById('add-to-read-form');
-        const toReadTableBody = document.getElementById('to-read-table').querySelector('tbody');
+        document.addEventListener('DOMContentLoaded', function () {
+            const toReadTableBody = document.getElementById('to-read-table').querySelector('tbody');
+            const readTableBody = document.getElementById('read-table').querySelector('tbody');
+            const toReadForm = document.getElementById('add-to-read-form');
+            const readForm = document.getElementById('add-read-form');
 
-        toReadForm.addEventListener('submit', function(event) {
-            event.preventDefault();
+            // Fetch and render books
+            function fetchBooks() {
+                // Fetch "Books I Want to Read"
+                fetch('/api/books/to-read')
+                    .then(response => response.json())
+                    .then(data => {
+                        toReadTableBody.innerHTML = '';
+                        data.forEach(book => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td><img src="${book.image}" alt="${book.title}"></td>
+                                <td>${book.title}</td>
+                                <td>${book.author}</td>
+                                <td>${book.isbn}</td>
+                                <td>
+                                    <button class="btn-delete" data-id="${book.id}">Delete</button>
+                                </td>
+                            `;
+                            toReadTableBody.appendChild(row);
+                        });
 
-            // Get form values
-            const title = document.getElementById('to-read-title').value;
-            const author = document.getElementById('to-read-author').value;
-            const imageInput = document.getElementById('to-read-image');
-
-            // Check if an image was uploaded
-            if (imageInput.files.length === 0) {
-                alert('Please upload an image of the book.');
-                return;
+                        // Add event listeners for delete buttons
+                        document.querySelectorAll('.btn-delete').forEach(button => {
+                            button.addEventListener('click', function () {
+                                const bookId = this.dataset.id;
+                                deleteBook(bookId);
+                            });
+                        });
+                    });
             }
 
-            const imageFile = imageInput.files[0];
-            const imageUrl = URL.createObjectURL(imageFile);
+            // Delete "Book I Want to Read"
+            function deleteBook(bookId) {
+                fetch(`/api/books/to-read/${bookId}`, {
+                    method: 'DELETE'
+                }).then(response => {
+                    if (response.ok) {
+                        fetchBooks(); // Refresh the table
+                    } else {
+                        console.error('Failed to delete book:', response.statusText);
+                    }
+                });
+            }
 
-            // Create a new row
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td><img src="${imageUrl}" alt="${title}"></td>
-                <td>${title}</td>
-                <td>${author}</td>
-            `;
+            // Add "Book I Want to Read"
+            toReadForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const title = document.getElementById('to-read-title').value;
+                const author = document.getElementById('to-read-author').value;
+                const isbn = document.getElementById('to-read-isbn').value;
+                const imageInput = document.getElementById('to-read-image');
+                const imageUrl = URL.createObjectURL(imageInput.files[0]);
 
-            // Add the row to the table
-            toReadTableBody.appendChild(row);
+                fetch('/api/books/to-read', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, author, isbn, image: imageUrl })
+                }).then(response => {
+                    if (!response.ok) {
+                        console.error('Failed to add book:', response.statusText);
+                    } else {
+                        fetchBooks(); // Refresh the table
+                        toReadForm.reset();
+                    }
+                });
+            });
 
-            // Reset the form
-            toReadForm.reset();
-        });
-
-        // Handle "Books I Have Read"
-        const readForm = document.getElementById('add-read-form');
-        const readTableBody = document.getElementById('read-table').querySelector('tbody');
-
-        readForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            const title = document.getElementById('read-title').value;
-            const author = document.getElementById('read-author').value;
-            const date = document.getElementById('read-date').value;
-
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${title}</td><td>${author}</td><td>${date}</td>`;
-            readTableBody.appendChild(row);
-
-            readForm.reset();
+            fetchBooks(); // Initial fetch
         });
     </script>
 </body>

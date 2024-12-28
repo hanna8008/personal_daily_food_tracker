@@ -321,5 +321,37 @@
             </form>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addMealForm = document.getElementById('add-meal-form');
+        const mealList = document.getElementById('meal-list');
+        const clearButton = document.getElementById('clear-meal-log');
+
+        // Load saved meals
+        const savedMeals = JSON.parse(localStorage.getItem('dailyMeals')) || [];
+        function renderMeals() {
+            mealList.innerHTML = savedMeals.map(meal => `<li>${meal}</li>`).join('');
+        }
+
+        // Add meal
+        addMealForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const meal = document.getElementById('meal-input').value;
+            savedMeals.push(meal);
+            localStorage.setItem('dailyMeals', JSON.stringify(savedMeals));
+            renderMeals();
+            addMealForm.reset();
+        });
+
+        // Clear meal log
+        clearButton.addEventListener('click', function () {
+            localStorage.removeItem('dailyMeals');
+            savedMeals.length = 0; // Clear the array
+            renderMeals();
+        });
+
+        renderMeals(); // Initial render
+    });
+</script>
 </body>
 </html>

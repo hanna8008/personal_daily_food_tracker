@@ -39,17 +39,6 @@
             padding: 12px 20px;
             color: #ff1493;
         }
-        .nav-link {
-            font-size: 1.3rem;
-            padding: 10px 20px;
-            font-weight: bold;
-            color: #ff69b4;
-        }
-        .nav-link:hover {
-            background-color: #fffafa;
-            border-radius: 10px;
-            color: #ff1493 !important;
-        }
         .content-container {
             max-width: 900px;
             margin: auto;
@@ -81,6 +70,22 @@
             }
         }
     </style>    
+
+    <style>
+        .nav-link {
+            transition: all 0.3s ease-in-out;
+            padding: 5px 15px;
+        }
+
+        .nav-link:hover {
+            background-color: #fffafa;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            color: #ff1493 !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+        }
+    </style> 
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -156,7 +161,7 @@
         </div>
     </nav>
 
-    
+
     <div class="container mt-5">
         <h1> 🏋️ 12-Week Workout Plan 🏋️ </h1>
         <p class="text-center" style="color: #ff69b4; font-weight: bold;">
@@ -292,5 +297,26 @@
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const workoutDropdowns = document.querySelectorAll('.workout-dropdown');
+
+        // Load saved states
+        workoutDropdowns.forEach(dropdown => {
+            const savedState = localStorage.getItem(dropdown.id);
+            if (savedState === 'true') {
+                dropdown.setAttribute('open', 'true');
+            }
+        });
+
+        // Save state on click
+        workoutDropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function () {
+                const isOpen = dropdown.hasAttribute('open');
+                localStorage.setItem(dropdown.id, isOpen.toString());
+            });
+        });
+    });
+</script>
 </body>
 </html>
