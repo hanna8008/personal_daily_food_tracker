@@ -123,6 +123,10 @@ def workouts():
 def home():
     return render_template('home.html')
 
+@app.route('/books')
+def books():
+    return render_template('books.html')
+
 '''
 OTHER TABS HERE
 '''

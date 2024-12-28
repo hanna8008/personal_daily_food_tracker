@@ -3,107 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Book Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-        /* Body and global text settings */
         body {
             background-color: #ffe4e1;
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            font-size: 1.1rem; /* Larger default font */
-            line-height: 1.6; /* Better spacing */
-            color: #333; /* Darker text for readability */
-        }
-        
-        /* Header styles */
-        h1, h2, h3 {
-            color: #ff1493;
             font-family: 'Pacifico', cursive;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1, h2 {
+            color: #ff1493;
             text-align: center;
         }
-        
-        h1 {
-            font-size: 3rem; /* Larger main header */
+        .btn-custom {
+            background-color: #ff69b4;
+            border-color: #ff69b4;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #ff1493;
+            border-color: #ff1493;
+        }
+        .table {
             margin-top: 30px;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-top: 20px;
-        }
-        
-        h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-        }
-        
-        /* Navigation bar adjustment */
-        .navbar {
-            padding: 15px 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar-brand {
-            font-size: 2.2rem; /* Bigger for visibility */
-            padding: 12px 20px;
-        }
-        
-        .nav-link {
-            font-size: 1.3rem; /* Make nav links bigger */
-            padding: 10px 20px;
-            font-weight: bold;
-            color: #ff69b4;
-        }
-        
-        .nav-link:hover {
-            background-color: #fffafa;
-            border-radius: 10px;
-            color: #ff1493 !important;
-        }
-        
-        /* Centered page content */
-        .content-container {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-        }
-        
-        /* Welcome text adjustment */
-        .welcome-text {
-            color: #ff69b4;
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-        }
-        
-        /* Responsiveness for smaller screens */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .nav-link {
-                font-size: 1.1rem;
-            }
-        }
-        </style>
-        
-        <style>
-        .nav-link {
-            transition: all 0.3s ease-in-out;
-            padding: 5px 15px;
-        }
-    
-        .nav-link:hover {
-            background-color: #fffafa;
             border: 2px solid #ff69b4;
-            border-radius: 8px;
-            color: #ff1493 !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
         }
-    </style>  
+        .table th, .table td {
+            color: #333;
+        }
+        .form-control {
+            border: 2px solid #ff69b4;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -178,50 +111,92 @@
             </div>
         </div>
     </nav>
+   
 
-    <!-- Content Section -->
-    <div class="content-container">
-        <h1 class="welcome-header">🌟 Hanna's 2025 Journey 🌟</h1>
-        <p class="welcome-text">
-            This website is my personal hub to track meals, habits, and workouts while staying accountable to myself in 2025. 
-            Start showing up for ME!
-        </p>
-        <!-- <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            Workout Goals 2025:
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            1. Grow Glutes
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            2. Sculpt Back
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            3. Toned Arms
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            4. Lose Stomach Fat
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            5. Defined, Visible Abs
-        </p>
-        <p class="text-center" style="color: #ff69b4; font-weight: bold;">
-            6. Hourglass Body Shape
-        </p> -->
+    <div class="container">
+        <h1>📚 Book Tracker 📚</h1>
+        <h2>Books I Want to Read</h2>
+        <form id="add-to-read-form" class="mt-4">
+            <div class="mb-3">
+                <input type="text" id="to-read-title" class="form-control" placeholder="Book Title" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" id="to-read-author" class="form-control" placeholder="Author" required>
+            </div>
+            <button type="submit" class="btn btn-custom">Add to List</button>
+        </form>
 
-        <!-- Add a Photo -->
-        <div style="display: flex; justify-content: center; margin: 20px 0;">
-            <img src="{{ url_for('static', filename='images/welcome_photo.jpg') }}" alt="Welcome Photo" 
-                 style="max-width: 100%; height: auto; border: 5px solid #ff69b4; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        </div>
-        
+        <table class="table table-bordered mt-5" id="to-read-table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-        <p class="welcome-text">Explore your habits, add meals, and smash your workouts! 🎉</p>
+        <h2 class="mt-5">Books I Have Read</h2>
+        <form id="add-read-form" class="mt-4">
+            <div class="mb-3">
+                <input type="text" id="read-title" class="form-control" placeholder="Book Title" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" id="read-author" class="form-control" placeholder="Author" required>
+            </div>
+            <div class="mb-3">
+                <input type="date" id="read-date" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-custom">Add to List</button>
+        </form>
 
-        <!-- Button to Navigate -->
-        <a href="/habit_building" class="btn btn-custom">Start Building Habits 🚀</a>
+        <table class="table table-bordered mt-5" id="read-table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Date Completed</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Handle "Books I Want to Read"
+        const toReadForm = document.getElementById('add-to-read-form');
+        const toReadTableBody = document.getElementById('to-read-table').querySelector('tbody');
+
+        toReadForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('to-read-title').value;
+            const author = document.getElementById('to-read-author').value;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${title}</td><td>${author}</td>`;
+            toReadTableBody.appendChild(row);
+
+            toReadForm.reset();
+        });
+
+        // Handle "Books I Have Read"
+        const readForm = document.getElementById('add-read-form');
+        const readTableBody = document.getElementById('read-table').querySelector('tbody');
+
+        readForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const title = document.getElementById('read-title').value;
+            const author = document.getElementById('read-author').value;
+            const date = document.getElementById('read-date').value;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${title}</td><td>${author}</td><td>${date}</td>`;
+            readTableBody.appendChild(row);
+
+            readForm.reset();
+        });
+    </script>
 </body>
 </html>
