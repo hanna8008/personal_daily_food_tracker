@@ -36,6 +36,16 @@
         .form-control {
             border: 2px solid #ff69b4;
         }
+        img {
+            max-width: 100px;
+            max-height: 150px;
+        }
+        .separator {
+            height: 3px;
+            background: linear-gradient(to right, #ff69b4, #ff1493);
+            margin: 50px 0;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -111,7 +121,6 @@
             </div>
         </div>
     </nav>
-   
 
     <div class="container">
         <h1>📚 Book Tracker 📚</h1>
@@ -123,12 +132,16 @@
             <div class="mb-3">
                 <input type="text" id="to-read-author" class="form-control" placeholder="Author" required>
             </div>
+            <div class="mb-3">
+                <input type="file" id="to-read-image" class="form-control" accept="image/*" required>
+            </div>
             <button type="submit" class="btn btn-custom">Add to List</button>
         </form>
 
         <table class="table table-bordered mt-5" id="to-read-table">
             <thead>
                 <tr>
+                    <th>Book Image</th>
                     <th>Book Title</th>
                     <th>Author</th>
                 </tr>
@@ -136,6 +149,9 @@
             <tbody>
             </tbody>
         </table>
+
+        <!-- Separator -->
+        <div class="separator"></div>
 
         <h2 class="mt-5">Books I Have Read</h2>
         <form id="add-read-form" class="mt-4">
@@ -171,13 +187,33 @@
 
         toReadForm.addEventListener('submit', function(event) {
             event.preventDefault();
+
+            // Get form values
             const title = document.getElementById('to-read-title').value;
             const author = document.getElementById('to-read-author').value;
+            const imageInput = document.getElementById('to-read-image');
 
+            // Check if an image was uploaded
+            if (imageInput.files.length === 0) {
+                alert('Please upload an image of the book.');
+                return;
+            }
+
+            const imageFile = imageInput.files[0];
+            const imageUrl = URL.createObjectURL(imageFile);
+
+            // Create a new row
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${title}</td><td>${author}</td>`;
+            row.innerHTML = `
+                <td><img src="${imageUrl}" alt="${title}"></td>
+                <td>${title}</td>
+                <td>${author}</td>
+            `;
+
+            // Add the row to the table
             toReadTableBody.appendChild(row);
 
+            // Reset the form
             toReadForm.reset();
         });
 
