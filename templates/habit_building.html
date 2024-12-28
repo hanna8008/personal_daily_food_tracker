@@ -6,76 +6,70 @@
     <title>Habit Building</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <style>
-        /* Body and global text settings */
         body {
             background-color: #ffe4e1;
-            font-family: 'Comic Sans MS', 'Arial', sans-serif;
-            font-size: 1.1rem; /* Larger default font */
-            line-height: 1.6; /* Better spacing */
-            color: #333; /* Darker text for readability */
+            font-family: 'Lato', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
         }
-        
-        /* Header styles */
         h1, h2, h3 {
             color: #ff1493;
             font-family: 'Pacifico', cursive;
             text-align: center;
         }
-        
         h1 {
-            font-size: 3rem; /* Larger main header */
+            font-size: 3rem;
             margin-top: 30px;
         }
-        
         h2 {
             font-size: 2rem;
             margin-top: 20px;
         }
-        
         h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
-        
-        /* Navigation bar adjustment */
         .navbar {
             padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
         .navbar-brand {
-            font-size: 2.2rem; /* Bigger for visibility */
+            font-size: 2.2rem;
             padding: 12px 20px;
+            color: #ff1493;
         }
-        
         .nav-link {
-            font-size: 1.3rem; /* Make nav links bigger */
+            font-size: 1.3rem;
             padding: 10px 20px;
             font-weight: bold;
             color: #ff69b4;
         }
-        
         .nav-link:hover {
             background-color: #fffafa;
             border-radius: 10px;
             color: #ff1493 !important;
         }
-        
-        /* Centered page content */
         .content-container {
             max-width: 900px;
             margin: auto;
             text-align: center;
         }
-        
-        /* Welcome text adjustment */
+        .accordion-button {
+            font-weight: bold;
+            color: #ff1493; /* Set text color to hot pink */
+            
+        }
+        .list-group-item {
+            display: flex;
+            align-items: center;
+            font-family: 'Lato', sans-serif; /* Improved font for list items */
+        }
         .welcome-text {
             color: #ff69b4;
             font-size: 1.4rem;
             margin-bottom: 30px;
         }
-        
-        /* Responsiveness for smaller screens */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -87,22 +81,8 @@
                 font-size: 1.1rem;
             }
         }
-        </style>
-        <style>
-        .nav-link {
-            transition: all 0.3s ease-in-out;
-            padding: 5px 15px;
-        }
+    </style>
     
-        .nav-link:hover {
-            background-color: #fffafa;
-            border: 2px solid #ff69b4;
-            border-radius: 8px;
-            color: #ff1493 !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-    </style> 
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -143,7 +123,7 @@
                                 padding: 5px 15px; border: 3px solid #ff69b4; 
                                 border-radius: 10px; background-color: #fffafa; 
                                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-                            Add Meals
+                            Goals
                         </a>
                     </li>
                     <li class="nav-item ms-2">
@@ -180,7 +160,7 @@
         <!-- Accordion for Weekly Habits -->
         <div class="accordion" id="habitAccordion">
             {% set weeks = [
-                (1, "Jan 01 - Jan 07", ["2 workouts (light strength/cardio)", "Sleep 8 hours nightly", "Drink 64 oz water daily", "Make your bed", "Write 3 things you're grateful for"]),
+                (1, "Jan 01 - Jan 07", ["2 workouts (light strength/cardio)", "Sleep 8 hours nightly", "Drink 64 oz water daily", "Make your bed", "Write 3 things you're grateful for", "Floss every day"]),
                 (2, "Jan 08 - Jan 14", ["3 workouts", "130-150g protein daily", "Plan your day (Top 3 priorities)", "10-min tidy before bed", "10-min walk after meals"]),
                 (3, "Jan 15 - Jan 21", ["3 workouts", "Stretch 5 minutes in the morning", "Daily multivitamin", "Pomodoro timer (25/5 rule)", "Avoid eating after 8 PM"]),
                 (4, "Jan 22 - Jan 28", ["4 workouts", "Cook 3x at home", "5-min screen breaks hourly", "10-min morning focus", "5-min journal before bed"]),

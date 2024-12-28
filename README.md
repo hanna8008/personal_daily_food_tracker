@@ -45,7 +45,7 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 - Intuitive and responsive navigation links:
   - **Home**
   - **Food Tracker**
-  - **Add Meals**
+  - **Goals**
   - **Workouts**
   - **Habit Building**
 - Styled with hover effects and a clean user interface.
@@ -75,7 +75,7 @@ The application is built using **Flask** for the backend and **HTML/CSS with Boo
 ├── templates/              # HTML templates
 │   ├── home.html               # Home page template
 │   ├── index_with_totals.html  # Food tracker page
-│   ├── add_meals.html          # Add meals page
+│   ├── add_meals.html          # Goals page
 │   ├── habit_building.html     # Habit building page
 │   ├── workouts.html           # Workouts page
 ├── static/                 # Static files (CSS, JS, images)
