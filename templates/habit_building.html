@@ -30,35 +30,45 @@
             font-size: 1.8rem;
             margin-bottom: 15px;
         }
+        /* Navigation bar adjustment */
         .navbar {
             padding: 15px 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
         .navbar-brand {
-            font-size: 2.2rem;
+            font-size: 2.2rem; /* Bigger for visibility */
             padding: 12px 20px;
-            color: #ff1493;
         }
+        
+        .nav-link {
+            font-size: 1.3rem; /* Make nav links bigger */
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #ff69b4;
+        }
+        
+        .nav-link:hover {
+            background-color: #fffafa;
+            border-radius: 10px;
+            color: #ff1493 !important;
+        }
+        
+        /* Centered page content */
         .content-container {
             max-width: 900px;
             margin: auto;
             text-align: center;
         }
-        .accordion-button {
-            font-weight: bold;
-            color: #ff1493; /* Set text color to hot pink */
-            
-        }
-        .list-group-item {
-            display: flex;
-            align-items: center;
-            font-family: 'Lato', sans-serif; /* Improved font for list items */
-        }
+        
+        /* Welcome text adjustment */
         .welcome-text {
             color: #ff69b4;
             font-size: 1.4rem;
             margin-bottom: 30px;
         }
+        
+        /* Responsiveness for smaller screens */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -70,14 +80,14 @@
                 font-size: 1.1rem;
             }
         }
-    </style>
-
-    <style>
+        </style>
+        
+        <style>
         .nav-link {
             transition: all 0.3s ease-in-out;
             padding: 5px 15px;
         }
-
+    
         .nav-link:hover {
             background-color: #fffafa;
             border: 2px solid #ff69b4;
@@ -86,7 +96,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-decoration: none;
         }
-    </style> 
+    </style>  
 
     
 </head>

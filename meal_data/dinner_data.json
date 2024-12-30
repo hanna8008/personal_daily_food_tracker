@@ -61,5 +61,33 @@
         "Sat Fat (g)": 13,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 3.82
+    },
+    "Indian Chicken and Nan": {
+        "Calories": 640,
+        "Protein (g)": 41,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 6,
+        "Total Cost ($)": 4.00
+    },
+    "Lean Cusine Protein Brocoli Chicken Alfredo" :{
+        "Calories": 280,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.94
+    },
+    "Lean Cusine Protein Mac n Cheese" :{
+        "Calories": 280,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.94
+    },
+    "Trader Joes Reduced Fat Mac n Cheese" :{
+        "Calories": 270,
+        "Protein (g)": 15,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 2.99
     }
 }
