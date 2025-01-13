@@ -7,11 +7,11 @@
         "Total Cost ($)": 2.69
     },
     "Chicken Alfredo": {
-        "Calories": 380,
-        "Protein (g)": 45,
-        "Sat Fat (g)": 0.5,
+        "Calories": 370,
+        "Protein (g)": 34,
+        "Sat Fat (g)": 2,
         "Added Sugar (g)": 1,
-        "Total Cost ($)": 3.11
+        "Total Cost ($)": 1.95
     },
     "Grilled Chicken Breast with Sweet Potato": {
         "Calories": 314,
@@ -89,5 +89,12 @@
         "Sat Fat (g)": 3.5,
         "Added Sugar (g)": 4,
         "Total Cost ($)": 2.99
+    },
+    "Lou Malnati's Deep Dish Cheese Pizza (1 slice from personal)" :{
+        "Calories": 380,
+        "Protein (g)": 16,
+        "Sat Fat (g)": 7,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 5.48
     }
 }

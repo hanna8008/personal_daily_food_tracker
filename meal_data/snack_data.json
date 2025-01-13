@@ -68,5 +68,19 @@
         "Sat Fat (g)": 3,
         "Added Sugar (g)": 4,
         "Total Cost ($)": 2.75
+    },
+    "Clementine": {
+        "Calories": 35,
+        "Protein (g)": 0.5,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.24
+    },
+    "Banana": {
+        "Calories": 110,
+        "Protein (g)": 1,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.26
     }
 }
