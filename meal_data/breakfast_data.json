@@ -26,5 +26,33 @@
         "Sat Fat (g)": 3.5,
         "Added Sugar (g)": 2,
         "Total Cost ($)": 2.00
+    },
+    "Catalina Crunch (1/2 cup)": {
+        "Calories": 110,
+        "Protein (g)": 11,
+        "Sat Fat (g)": 0.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.05
+    },
+    "Magic Spoon Cocoa Grain-Free Breakfast Cereal (1 cup)": {
+        "Calories": 140,
+        "Protein (g)": 13,
+        "Sat Fat (g)": 1.0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.78
+    }, 
+    "Cheerios Protein Cereal, Cookies and Crème (1 cup)": {
+        "Calories": 150,
+        "Protein (g)": 8,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 11,
+        "Total Cost ($)": 0.45
+    }, 
+    "Butterball Turkey Bacon Lower Sodium (1 slice)": {
+        "Calories": 30,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 0.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.16
     }
 }

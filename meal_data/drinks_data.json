@@ -103,5 +103,12 @@
         "Sat Fat (g)": 0,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 0.75
+    },
+    "Fairlife Fat Free Milk (1 cup)":   {
+        "Calories": 80,
+        "Protein (g)": 13,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.87
     }
 }
