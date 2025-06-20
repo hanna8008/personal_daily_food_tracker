@@ -13,6 +13,13 @@
         "Added Sugar (g)": 0,
         "Total Cost ($)": 2.44
     },
+    "Vanilla Protein Ice Cream with Mini PB M&Ms (3 Tbsp)": {
+        "Calories": 275,
+        "Protein (g)": 24,
+        "Sat Fat (g)": 5.5,
+        "Added Sugar (g)": 14,
+        "Total Cost ($)": 2.68
+    },
     "Chocolate Ice Cream with Sugar-Free Reese's": {
         "Calories": 225,
         "Protein (g)": 23,
@@ -42,10 +49,59 @@
         "Total Cost ($)": 1.76
     },
     "Strawberries with Whipped Cream on Yellow Cake": {
+        "Calories": 253.33,
+        "Protein (g)": 4.44,
+        "Sat Fat (g)": 1.67,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.63
+    }, 
+    "Sugar Free Bomb Pops (1 popsicle)": {
+        "Calories": 20,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.37
+    },
+    "Sugar Free Bomb Pops (3 popsicles = 1 serving size)": {
+        "Calories": 50,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 1.12
+    },
+    "Chocolate Protein Banana Crepe + Powdered PB turned into PB (2 Tbsp)": {
+        "Calories": 255,
+        "Protein (g)": 19,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 2,
+        "Total Cost ($)": 1.60
+    },
+    "ProDough High Protein Vanilla Cupcake (1 cupcake)": {
+        "Calories": 110,
+        "Protein (g)": 11,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.50
+    },
+    "ProDough High Protein Chocolate Cupcake (1 cupcake)": {
+        "Calories": 115,
+        "Protein (g)": 13,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.50
+    },
+    "Strawberry Shortcake with ProDough Cupcakes (2 cupcakes) + 5 servings of whipped cream": {
         "Calories": 290,
-        "Protein (g)": 5.11,
-        "Sat Fat (g)": 2,
-        "Added Sugar (g)": 5,
-        "Total Cost ($)": 1.76
+        "Protein (g)": 23.11,
+        "Sat Fat (g)": 3,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.37
+    }, 
+    "Lakanto Sugar Free Chocolate Chip Cookie (1 cookie)": {
+        "Calories": 60,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.70
     }
 }
