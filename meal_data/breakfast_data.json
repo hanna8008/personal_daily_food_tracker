@@ -54,5 +54,19 @@
         "Sat Fat (g)": 0.5,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 0.16
+    },
+    "Cinnamon Toast Crunch": {
+        "Calories": 170,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 12,
+        "Total Cost ($)": 0.00
+    },
+    "Frozen Kodiak Protein-Pack Buttermilk and Vanilla Waffles (2 waffles)": {
+        "Calories": 240,
+        "Protein (g)": 12,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)":0.00
     }
 }

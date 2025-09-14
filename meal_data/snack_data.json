@@ -27,6 +27,34 @@
         "Added Sugar (g)": 0,
         "Total Cost ($)": 2.25
     },
+    "Barbell Protein Bar - Cookies & Caramel": {
+        "Calories": 210,
+        "Protein (g)": 20,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Built Puff Bar - Brownie Batter": {
+        "Calories": 140,
+        "Protein (g)": 17,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 6,
+        "Total Cost ($)": 2.75
+    },
+    "Zucchini (1 cup) & Yum Yum Sauce (1 tbsp)": {
+        "Calories": 65,
+        "Protein (g)": 1.5,
+        "Sat Fat (g)": 0.75,
+        "Added Sugar (g)": 1.5,
+        "Total Cost ($)": 0.00
+    },
+    "Strawberries (1 cup) & Sugar Free Cool Whip (4 tbsp)": {
+        "Calories": 90,
+        "Protein (g)": 1,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
     "Mixed Fruit": {
         "Calories": 231,
         "Protein (g)": 3.01,
@@ -82,5 +110,61 @@
         "Sat Fat (g)": 0,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 0.26
+    },
+    "Frozen French Fries - Shoestring": {
+        "Calories": 140,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Frozen French Fries - Extra Crispy Fast Food Fries": {
+        "Calories": 160,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Simply Ketchup (1 tbsp)": {
+        "Calories": 20,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 3,
+        "Total Cost ($)": 0.00
+    },
+    "Trader Joes Mlti-Floral and Clover Honey (1 tbsp)": {
+        "Calories": 60,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 17,
+        "Total Cost ($)": 0.00
+    },
+    "Guacamole - Walmart Mild (1 cup)": {
+        "Calories": 100,
+        "Protein (g)": 1,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Tostitos Scoops (13 chips)": {
+        "Calories": 140,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Tostitos Resturant Salsa Medium (2 Tbsp)": {
+        "Calories": 15,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Garlic Bread with Light Multi-Grain English Muffins (1 muffin)": {
+        "Calories": 100,
+        "Protein (g)": 4,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
     }
 }

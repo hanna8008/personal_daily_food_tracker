@@ -91,33 +91,72 @@
             margin-top: 20px;
             color: #ff1493;
         }
-    /* Responsiveness for smaller screens */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            h2 {
-                font-size: 1.8rem;
-            }
-            .nav-link {
-                font-size: 1.1rem;
-            }
+        .badge-goal { 
+            background-color: #ff69b4; 
+            color: #000;   /* 👈 black text */
         }
-        <style>
-        .nav-link {
-            transition: all 0.3s ease-in-out;
-            padding: 5px 15px;
-        }
-    
-        .nav-link:hover {
-            background-color: #fffafa;
-            border: 2px solid #ff69b4;
-            border-radius: 8px;
-            color: #ff1493 !important;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-decoration: none;
-        }
-    </style> 
+    /* Weekly calendar grid */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .calendar .day-box {
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #fff0f5;
+      text-align: center;
+      min-height: 160px;
+    }
+    .calendar-header {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ff69b4;
+    }
+
+    .totals-section ul { list-style: none; padding: 0; font-size: 16px; }
+    .totals-section ul li { color: #333; margin-bottom: 5px; }
+    .totals-section ul li strong { color: #ff69b4; }
+
+    .action-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .total-cost-header { margin-top: 20px; color: #ff1493; }
+
+    /* Chips and goals styling */
+    .chip { border-radius: 999px; padding: 0.35rem 0.75rem; font-weight: 700; }
+    .chip-green { background: #e8f7ea; color: #157347; border: 2px solid #a6e3b2; }
+    .chip-yellow { background: #fff8e5; color: #8a6d3b; border: 2px solid #ffe08a; }
+    .chip-red { background: #fde7e7; color: #b02a37; border: 2px solid #f5a3a3; }
+    .badge-goal { background-color: #ff69b4; color: #fff; }
+    .subtle { color:#b85a8b; font-size:.9rem; }
+
+    /* Navbar hover polish */
+    .nav-link { transition: all 0.3s ease-in-out; padding: 5px 15px; }
+    .nav-link:hover {
+      background-color: #fffafa;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      color: #ff1493 !important;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .calendar { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 576px) {
+      .calendar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -200,158 +239,266 @@
     <div class="container text-center">
         <!-- Header -->
         <h1 class="section-header">✨ Daily Meal Tracker ✨</h1>
-        <p style="color: #ff69b4;">Eat for energy, move for joy, and live for the moments that matter. 💪</p>
-
-        <!-- Divider -->
-        <hr class="section-divider">
-
-        <!-- Today's Meals and Totals Section -->
+        <p style="color:#ff69b4;">Eat for energy, move for joy, and live for the moments that matter. 💪</p>
+    
+        <hr class="section-divider"/>
+    
+        <!-- Today's Meals + Totals -->
         <div class="row">
-            <div class="col-md-6">
-                <h3 class="section-header">Today's Meals</h3>
-                {% if log['meals'] %}
-                    {% for meal_type, meals in log['meals'].items() %}
-                        <h5>{{ meal_type }}</h5>
-                        <ul>
-                            {% for meal in meals %}
-                                <li>{{ meal }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endfor %}
-                {% else %}
-                    <p>No meals logged yet.</p>
-                {% endif %}
-                <!-- Clear Daily Log Button -->
-                <form method="GET" action="/clear_daily_log" class="mt-3">
-                    <button type="submit" class="btn btn-danger">Clear Daily Meal Log</button>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <h3 class="section-header">Today's Totals</h3>
-                <div class="totals-section">
-                    <ul>
-                        <li><strong>Calories:</strong> {{ log['totals']['Calories'] }}</li>
-                        <li><strong>Protein (g):</strong> {{ log['totals']['Protein (g)'] }}</li>
-                        <li><strong>Saturated Fat (g):</strong> {{ log['totals']['Sat Fat (g)'] }}</li>
-                        <li><strong>Added Sugar (g):</strong> {{ log['totals']['Added Sugar (g)'] }}</li>
-                        <li><strong>Total Cost ($):</strong> {{ log['totals']['Total Cost ($)']|round(2) }}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="section-divider">
-
-        <!-- Add Meal and Calendar Form Section -->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <h4>Add a Meal</h4>
-                    <form method="POST" action="/add">
-                        <select name="meal_type" class="form-select mb-3">
-                            {% for meal_type in meal_data.keys() %}
-                                <option value="{{ meal_type }}">{{ meal_type }}</option>
-                            {% endfor %}
-                        </select>
-                        <select name="meal_item" class="form-select mb-3">
-                            {% for meal_type, items in meal_data.items() %}
-                                <optgroup label="{{ meal_type }}">
-                                    {% for item_name, item_data in items.items() %}
-                                        <option value="{{ item_name }}">{{ item_name }}</option>
-                                    {% endfor %}
-                                </optgroup>
-                            {% endfor %}
-                        </select>
-                        <button type="submit" class="btn btn-custom">Add Meal</button>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card p-3">
-                    <h4>Add to Monthly Calendar</h4>
-                    <form method="POST" action="/add_to_calendar">
-                        <input type="number" id="day" name="day" min="1" max="30" class="form-control mb-3" placeholder="Day" required>
-                        <select name="meal_type" class="form-select mb-3">
-                            {% for meal_type in meal_data.keys() %}
-                                <option value="{{ meal_type }}">{{ meal_type }}</option>
-                            {% endfor %}
-                        </select>
-                        <select name="meal_item" class="form-select mb-3">
-                            {% for meal_type, items in meal_data.items() %}
-                                <optgroup label="{{ meal_type }}">
-                                    {% for item_name in items.keys() %}
-                                        <option value="{{ item_name }}">{{ item_name }}</option>
-                                    {% endfor %}
-                                </optgroup>
-                            {% endfor %}
-                        </select>
-                        <button type="submit" class="btn btn-custom">Add to Calendar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="section-divider">
-
-        <!-- Monthly Calendar -->
-        <h3 class="section-header">📅 Monthly Calendar</h3>
-        <div class="calendar">
-            {% for day, data in calendar.items() %}
-                <div>
-                    <div class="calendar-header">Day {{ day }}</div>
-                    <ul>
-                        {% for meal in data["meals"] %}
-                            <li>{{ meal }}</li>
-                        {% endfor %}
-                    </ul>
-                    <p><strong>Cost:</strong> ${{ data["cost"]|round(2) }}</p>
-                </div>
-            {% endfor %}
-        </div>
-
-        <!-- Total Monthly Cost -->
-        <h3>Total Monthly Cost: ${{ calendar.values()|map(attribute='cost')|sum|round(2) }}</h3>
-
-        <!-- Clear Calendar Button -->
-        <div class="action-buttons">
-            <form method="GET" action="/clear_calendar">
-                <button type="submit" class="btn btn-danger">Clear Calendar</button>
+          <div class="col-md-6">
+            <h3 class="section-header">Today's Meals</h3>
+            {% if log['meals'] %}
+              {% for meal_type, meals in log['meals'].items() %}
+                <h5>{{ meal_type }}</h5>
+                <ul>
+                  {% for meal in meals %}
+                    <li>{{ meal }}</li>
+                  {% endfor %}
+                </ul>
+              {% endfor %}
+            {% else %}
+              <p>No meals logged yet.</p>
+            {% endif %}
+            <!-- Clear Daily Log Button -->
+            <form method="GET" action="/clear_daily_log" class="mt-3">
+              <button type="submit" class="btn btn-danger">Clear Daily Meal Log</button>
             </form>
+          </div>
+    
+          <div class="col-md-6">
+            <h3 class="section-header">Today's Totals</h3>
+            <div class="totals-section">
+              <ul>
+                <li><strong>Calories:</strong> <span id="tot-kcal">{{ log['totals']['Calories'] }}</span></li>
+                <li><strong>Protein (g):</strong> <span id="tot-pro">{{ log['totals']['Protein (g)'] }}</span></li>
+                <li><strong>Saturated Fat (g):</strong> <span id="tot-sat">{{ log['totals']['Sat Fat (g)'] }}</span></li>
+                <li><strong>Added Sugar (g):</strong> <span id="tot-sugar">{{ log['totals']['Added Sugar (g)'] }}</span></li>
+                <li><strong>Total Cost ($):</strong> {{ log['totals']['Total Cost ($)']|round(2) }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const addMealForm = document.getElementById('add-meal-form');
-        const mealList = document.getElementById('meal-list');
-        const clearButton = document.getElementById('clear-meal-log');
-
-        // Load saved meals
-        const savedMeals = JSON.parse(localStorage.getItem('dailyMeals')) || [];
-        function renderMeals() {
-            mealList.innerHTML = savedMeals.map(meal => `<li>${meal}</li>`).join('');
-        }
-
-        // Add meal
-        addMealForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const meal = document.getElementById('meal-input').value;
-            savedMeals.push(meal);
-            localStorage.setItem('dailyMeals', JSON.stringify(savedMeals));
-            renderMeals();
-            addMealForm.reset();
-        });
-
-        // Clear meal log
-        clearButton.addEventListener('click', function () {
-            localStorage.removeItem('dailyMeals');
-            savedMeals.length = 0; // Clear the array
-            renderMeals();
-        });
-
-        renderMeals(); // Initial render
-    });
-</script>
-</body>
+    
+        <!-- Daily Nutrition Goals card -->
+        <div class="card p-4 mx-auto mt-4" style="max-width: 740px;">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-2">
+            <div>
+              <h3 class="m-0" style="color:#ff1493;">Daily Nutrition Goals</h3>
+              <div class="subtle">Small deficit for ~0.5 lb/week: <strong>1700–1900 kcal/day</strong></div>
+            </div>
+            <span id="overall-chip" class="chip mt-2 mt-md-0">Today: —</span>
+          </div>
+    
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th class="text-center">Target (Green Range)</th>
+                  <th class="text-center">Today</th>
+                  <th class="text-center">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Calories</strong></td>
+                  <td class="text-center"><span class="badge badge-goal rounded-pill px-3 py-2">1700–1900 kcal</span></td>
+                  <td class="text-center">
+                    {{ (log['totals']['Calories'] or 0) | round(0) }} kcal
+                  </td>
+                  <td class="text-center"><span id="chip-kcal" class="chip">—</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Protein</strong></td>
+                  <td class="text-center"><span class="badge badge-goal rounded-pill px-3 py-2">130–150 g</span></td>
+                  <td class="text-center">
+                    {{ (log['totals']['Protein (g)'] or 0) | round(1) }} g
+                  </td>
+                  <td class="text-center"><span id="chip-pro" class="chip">—</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Saturated Fat</strong></td>
+                  <td class="text-center"><span class="badge badge-goal rounded-pill px-3 py-2">&le; 13 g</span></td>
+                  <td class="text-center">
+                    {{ (log['totals']['Sat Fat (g)'] or 0) | round(1) }} g
+                  </td>
+                  <td class="text-center"><span id="chip-sat" class="chip">—</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Added Sugar</strong></td>
+                  <td class="text-center"><span class="badge badge-goal rounded-pill px-3 py-2">&le; 15 g</span></td>
+                  <td class="text-center">
+                    {{ (log['totals']['Added Sugar (g)'] or 0) | round(1) }} g
+                  </td>
+                  <td class="text-center"><span id="chip-sugar" class="chip">—</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    
+          <hr/>
+          <p class="mb-1" style="color:#ff69b4; font-weight:bold;">Traffic Light Guide</p>
+          <div class="small">
+            <div><span class="chip chip-green me-2">Green</span> Calories 1700–1900 • Protein 130–150g • Sat Fat ≤13g • Added Sugar ≤15g</div>
+            <div class="mt-1"><span class="chip chip-yellow me-2">Yellow</span> Calories 1600–1700 or 1900–2000 • Protein 115–129g • Sat Fat 14–18g • Added Sugar 16–25g</div>
+            <div class="mt-1"><span class="chip chip-red me-2">Red</span> Calories &lt;1600 or &gt;2000 • Protein &lt;115g • Sat Fat &gt;18g • Added Sugar &gt;25g</div>
+          </div>
+        </div>
+    
+        <hr class="section-divider"/>
+    
+        <!-- Add Meal + Weekly Calendar forms -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h4>Add a Meal</h4>
+              <form method="POST" action="/add">
+                <select name="meal_type" class="form-select mb-3">
+                  {% for meal_type in meal_data.keys() %}
+                    <option value="{{ meal_type }}">{{ meal_type }}</option>
+                  {% endfor %}
+                </select>
+                <select name="meal_item" class="form-select mb-3">
+                  {% for meal_type, items in meal_data.items() %}
+                    <optgroup label="{{ meal_type }}">
+                      {% for item_name, item_data in items.items() %}
+                        <option value="{{ item_name }}">{{ item_name }}</option>
+                      {% endfor %}
+                    </optgroup>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-custom">Add Meal</button>
+              </form>
+            </div>
+          </div>
+    
+          <div class="col-md-6">
+            <div class="card p-3">
+              <h4>Add to Weekly Calendar</h4>
+              <form method="POST" action="/add_to_calendar">
+                <input type="number" id="day" name="day" min="1" max="7" class="form-control mb-3"
+                       placeholder="Weekday number (1=Mon ... 7=Sun)" required/>
+                <select name="meal_type" class="form-select mb-3">
+                  {% for meal_type in meal_data.keys() %}
+                    <option value="{{ meal_type }}">{{ meal_type }}</option>
+                  {% endfor %}
+                </select>
+                <select name="meal_item" class="form-select mb-3">
+                  {% for meal_type, items in meal_data.items() %}
+                    <optgroup label="{{ meal_type }}">
+                      {% for item_name in items.keys() %}
+                        <option value="{{ item_name }}">{{ item_name }}</option>
+                      {% endfor %}
+                    </optgroup>
+                  {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-custom">Add to Weekly Calendar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    
+        <hr class="section-divider"/>
+    
+        <!-- Weekly Calendar -->
+        <h3 class="section-header">📅 Weekly Calendar</h3>
+        {% set weekday_names = {1:'Mon', 2:'Tue', 3:'Wed', 4:'Thu', 5:'Fri', 6:'Sat', 7:'Sun'} %}
+        {% set week_days = [1,2,3,4,5,6,7] %}
+        <div class="calendar">
+          {% for day in week_days %}
+            <div class="day-box">
+              <div class="calendar-header">{{ weekday_names[day] }}</div>
+              <ul class="text-start" style="padding-left: 1rem;">
+                {% for meal in calendar.get(day, {'meals': []})['meals'] %}
+                  <li>{{ meal }}</li>
+                {% endfor %}
+              </ul>
+              <p class="mb-0"><strong>Cost:</strong> $
+                {{ (calendar.get(day, {'cost': 0})['cost'] or 0) | round(2) }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+    
+        <!-- Total Weekly Cost -->
+        {% set weekly_total = 0 %}
+        {% for day in week_days %}
+          {% set weekly_total = weekly_total + (calendar.get(day, {'cost': 0})['cost'] or 0) %}
+        {% endfor %}
+        <h3 class="total-cost-header">Total Weekly Cost: ${{ weekly_total | round(2) }}</h3>
+    
+        <!-- Clear Weekly Calendar Button -->
+        <div class="action-buttons">
+          <form method="GET" action="/clear_calendar">
+            <button type="submit" class="btn btn-danger">Clear Weekly Calendar</button>
+          </form>
+        </div>
+      </div>
+    
+      <!-- Scripts -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+      <script>
+        // Compute traffic-light chips from the live totals already rendered above
+        (function () {
+          const parseNum = (s) => {
+            const n = parseFloat(String(s).replace(/[^0-9.]/g, ''));
+            return isNaN(n) ? 0 : n;
+          };
+    
+          const kcal = parseNum(document.getElementById('tot-kcal').textContent);
+          const pro  = parseNum(document.getElementById('tot-pro').textContent);
+          const sat  = parseNum(document.getElementById('tot-sat').textContent);
+          const sug  = parseNum(document.getElementById('tot-sugar').textContent);
+    
+          const setChip = (el, status) => {
+            el.classList.remove('chip-green','chip-yellow','chip-red');
+            el.classList.add(
+              status === 'green' ? 'chip-green' :
+              status === 'yellow' ? 'chip-yellow' : 'chip-red'
+            );
+            el.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+          };
+    
+          function statusCalories(v){
+            if (v >= 1700 && v <= 1900) return 'green';
+            if ((v >= 1600 && v < 1700) || (v > 1900 && v <= 2000)) return 'yellow';
+            return 'red';
+          }
+          function statusProtein(v){
+            if (v >= 130 && v <= 150) return 'green';
+            if (v >= 115 && v <= 129) return 'yellow';
+            return 'red';
+          }
+          function statusCap(v, greenMax, yellowMax){
+            if (v <= greenMax) return 'green';
+            if (v > greenMax && v <= yellowMax) return 'yellow';
+            return 'red';
+          }
+    
+          const chipKcal = document.getElementById('chip-kcal');
+          const chipPro  = document.getElementById('chip-pro');
+          const chipSat  = document.getElementById('chip-sat');
+          const chipSugar= document.getElementById('chip-sugar');
+          const overall  = document.getElementById('overall-chip');
+    
+          const sKcal  = statusCalories(kcal);
+          const sPro   = statusProtein(pro);
+          const sSat   = statusCap(sat, 13, 18);
+          const sSugar = statusCap(sug, 15, 25);
+    
+          setChip(chipKcal, sKcal);
+          setChip(chipPro,  sPro);
+          setChip(chipSat,  sSat);
+          setChip(chipSugar,sSugar);
+    
+          const statuses = [sKcal, sPro, sSat, sSugar];
+          const overallStatus =
+            statuses.every(s => s === 'green') ? 'green' :
+            statuses.some(s => s === 'red') ? 'red' : 'yellow';
+    
+          setChip(overall, overallStatus);
+          overall.textContent = `Today: ${overallStatus.charAt(0).toUpperCase() + overallStatus.slice(1)}`;
+        })();
+      </script>
+    </body>
 </html>

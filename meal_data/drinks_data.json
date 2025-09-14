@@ -20,6 +20,13 @@
         "Added Sugar (g)": 0,
         "Total Cost ($)": 3.28
     },
+    "Chocolate Fairlife 30g Protein Shake (30g)": {
+        "Calories": 150,
+        "Protein (g)": 30,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
     "Oikos Smoothie Protein Shake": {
         "Calories": 140,
         "Protein (g)": 23,
@@ -110,5 +117,19 @@
         "Sat Fat (g)": 0,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 0.87
+    },
+    "Aldi White 2% Reduced Milk": {
+        "Calories": 120,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Aldi Chocolate 2% Reduced Milk": {
+        "Calories": 170,
+        "Protein (g)": 14,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 8,
+        "Total Cost ($)": 0.00
     }
 }

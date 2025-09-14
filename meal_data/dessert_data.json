@@ -103,5 +103,110 @@
         "Sat Fat (g)": 1,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 0.70
+    },
+    "Sugar Free Klondike Bar": {
+        "Calories": 170,
+        "Protein (g)": 3,
+        "Sat Fat (g)": 8,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.71
+    },
+    "Mini PB M&Ms (3 Tbsp)": {
+        "Calories": 160,
+        "Protein (g)": 3,
+        "Sat Fat (g)": 4.5,
+        "Added Sugar (g)": 14,
+        "Total Cost ($)": 0.00
+    },
+    "Sugar Free Bomb Pop (1 popsicle)": {
+        "Calories": 20,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Sugar Free Bomb Pop (3 popsicles = 1 serving size)": {
+        "Calories": 50,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Vanilla Bryers Sugar Free Ice Cream (2/3 cup)": {
+        "Calories": 100,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Vanilla Bryers Carb Smart Ice Cream (2/3 cup):": {
+        "Calories": 110,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 4,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Chocolate Bryers Carb Smart Ice Cream (2/3 cup)": {
+        "Calories": 110,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 4,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Liv's Red Velvt Protein Cookie": {
+        "Calories": 160,
+        "Protein (g)": 19,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 2.50
+    },
+    "Ice cream cone": {
+        "Calories": 20,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Halo Top Ice Cream: Light Coookies & Cream (2/3 cup)": {
+        "Calories": 100,
+        "Protein (g)": 6,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 0.00
+    },
+    "Halo Top Ice Cream: Chocolate Light (2/3 cup)": {
+        "Calories": 100,
+        "Protein (g)": 6,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 0.00
+    },
+    "Halo Top Ice Cream: Chocolate Vanilla Twist (2/3 cup)": {
+        "Calories": 100,
+        "Protein (g)": 5,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 0.00
+    },
+    "Halo Top Ice Cream: Mix-Ins Chocolate Fudge Brownie": {
+        "Calories": 160,
+        "Protein (g)": 6,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 12,
+        "Total Cost ($)": 0.00
+    },
+    "Zero Sugar Cool Whip (2 tbsp)": {
+        "Calories": 20,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Zero Sugar Whipped Cream (2 tbsp)": {
+        "Calories": 5,
+        "Protein (g)": 0,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
     }
 }

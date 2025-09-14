@@ -1,17 +1,31 @@
 {
-    "Chicken Cheese Quesadilla": {
-        "Calories": 305,
-        "Protein (g)": 40,
-        "Sat Fat (g)": 5,
+    "Chicken Cheese Quesadilla - Walmart": {
+        "Calories": 260,
+        "Protein (g)": 39,
+        "Sat Fat (g)": 4.5, 
         "Added Sugar (g)": 0,
         "Total Cost ($)": 2.69
     },
-    "Chicken Alfredo": {
-        "Calories": 370,
-        "Protein (g)": 34,
-        "Sat Fat (g)": 2,
+    "Just Bare Chicken Nuggets": {
+        "Calories": 160,
+        "Protein (g)": 16,
+        "Sat Fat (g)": 1,
         "Added Sugar (g)": 1,
-        "Total Cost ($)": 1.95
+        "Total Cost ($)": 0.00
+    },
+    "Cheeseburger": {
+        "Calories": 280,
+        "Protein (g)": 38,
+        "Sat Fat (g)": 2.5,
+        "Added Sugar (g)": 10,
+        "Total Cost ($)": 0.00
+    },
+    "Chicken Alfredo": {
+        "Calories": 380,
+        "Protein (g)": 45,
+        "Sat Fat (g)": 0.5,
+        "Added Sugar (g)": 1,
+        "Total Cost ($)": 3.11
     },
     "Grilled Chicken Breast with Sweet Potato": {
         "Calories": 314,
@@ -77,9 +91,9 @@
         "Total Cost ($)": 2.94
     },
     "Lean Cusine Protein Mac n Cheese" :{
-        "Calories": 280,
-        "Protein (g)": 20,
-        "Sat Fat (g)": 2,
+        "Calories": 270,
+        "Protein (g)": 17,
+        "Sat Fat (g)": 4.5,
         "Added Sugar (g)": 0,
         "Total Cost ($)": 2.94
     },
@@ -90,11 +104,60 @@
         "Added Sugar (g)": 4,
         "Total Cost ($)": 2.99
     },
-    "Lou Malnati's Deep Dish Cheese Pizza (1 slice from personal)" :{
-        "Calories": 380,
+    "Healthy Choice Simply Steamers Beef & Brocoli" :{
+        "Calories": 270,
         "Protein (g)": 16,
-        "Sat Fat (g)": 7,
+        "Sat Fat (g)": 1.5,
+        "Added Sugar (g)": 6,
+        "Total Cost ($)": 3.42
+    },
+    "Gnocchi with Meat Prego and Ground Beef": {
+        "Calories": 410,
+        "Protein (g)": 29,
+        "Sat Fat (g)": 3.5,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 2.52
+    },
+    "Scallop Potatoes (2/3 cup)": {
+        "Calories": 170,
+        "Protein (g)": 1,
+        "Sat Fat (g)": 0,
         "Added Sugar (g)": 0,
-        "Total Cost ($)": 5.48
+        "Total Cost ($)": 0.00
+    },
+    "Ham - 2oz (part of scallop potatoes & ham)": {
+        "Calories": 100,
+        "Protein (g)": 16,
+        "Sat Fat (g)": 1,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    }, 
+    "Banza Pasta - 2oz dry": {
+        "Calories": 190,
+        "Protein (g)": 11,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Prego Meat Sauce": {
+        "Calories": 70,
+        "Protein (g)": 2,
+        "Sat Fat (g)": 0,
+        "Added Sugar (g)": 4,
+        "Total Cost ($)": 0.00
+    },
+    "96% Lean Ground Beef - 4oz": {
+        "Calories": 140,
+        "Protein (g)": 24,
+        "Sat Fat (g)": 2,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
+    },
+    "Chicken Cheese Quesdaila - Target": {
+        "Calories": 360,
+        "Protein (g)": 43,
+        "Sat Fat (g)": 4,
+        "Added Sugar (g)": 0,
+        "Total Cost ($)": 0.00
     }
 }
